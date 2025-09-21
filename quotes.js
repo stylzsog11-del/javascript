@@ -17,45 +17,43 @@ userNum = Number(userNum);
 const index = userNum % quotes.length;
 
 // Display the selected quote
-// Use built-in function getElementById
-// Use variable index
-// Use array access
-// Use math operation (modulus)
 document.getElementById("quote").textContent = quotes[index];
 
-// Array of 3 favorite website URLs
+// Create an array of 3 favorite website URLs
 let websites = [
     "https://www.mozilla.org/",
     "https://www.w3schools.com/",
     "https://developer.mozilla.org/"
 ];
 
-// Write initial list of websites as links
+// Function to display an array of URLs as clickable links
 function displayWebsites(arr) {
     const ul = document.getElementById("websites");
     ul.innerHTML = "";
-    arr.forEach(function(url) {
+    for (let i = 0; i < arr.length; i++) {
         const li = document.createElement("li");
         const a = document.createElement("a");
-        a.href = url;
-        a.textContent = url;
+        a.href = arr[i];
+        a.textContent = arr[i];
         a.target = "_blank";
         li.appendChild(a);
         ul.appendChild(li);
-    });
+    }
 }
+
+// Display the initial list of websites
 displayWebsites(websites);
 
-// Prompt user for their favorite website
-let favSite = prompt("Enter your favorite website URL:");
+// Prompt the user for their favorite website URL
+let favSite = prompt("Enter your favorite website URL (include https://):");
 
-// Add the new site to the end of the array
+// Add the new site to the end of the array using push()
 websites.push(favSite);
 
-// Delete the first website from the array
+// Delete the first website from the array using shift()
 websites.shift();
 
-// Display the updated list
+// Display the updated list of websites
 displayWebsites(websites);
 
-// End of script
+// Comments throughout explain each step and use of array methods
