@@ -13,13 +13,19 @@ let userNum = prompt("Enter a number to get your quote of the day:");
 // Convert input to a number (differentiate data types)
 userNum = Number(userNum);
 
-// Use modulus to get a random quote index
-const index = userNum % quotes.length;
+// Use modulus to get a quote index, default to 0 if invalid
+let index = 0;
+if (!isNaN(userNum) && userNum !== null) {
+    index = Math.abs(userNum) % quotes.length;
+}
 
 // Display the selected quote
-document.getElementById("quote").textContent = quotes[index];
+const quoteElem = document.getElementById("quote");
+if (quoteElem) {
+    quoteElem.textContent = quotes[index];
+}
 
-// Create an array of 3 favorite website URLs
+// Array of favorite website URLs
 let websites = [
     "https://www.mozilla.org/",
     "https://www.w3schools.com/",
@@ -30,13 +36,14 @@ let websites = [
 // Function to display an array of URLs as clickable links
 function displayWebsites(arr) {
     const ul = document.getElementById("websites");
+    if (!ul) return;
     ul.innerHTML = "";
     for (let i = 0; i < arr.length; i++) {
         const li = document.createElement("li");
         const a = document.createElement("a");
         a.href = arr[i];
         a.textContent = arr[i];
-        
+        a.target = "_blank";
         li.appendChild(a);
         ul.appendChild(li);
     }
@@ -48,13 +55,12 @@ displayWebsites(websites);
 // Prompt the user for their favorite website URL
 let favSite = prompt("Enter your favorite website URL (include https://):");
 
-// Add the new site to the end of the array using push()
-websites.push(favSite);
-
-// Delete the first website from the array using shift()
-websites.shift();
+// Add the new site to the end of the array using push(), if input is valid
+if (favSite && favSite.startsWith("http")) {
+    websites.push(favSite);
+    // Delete the first website from the array using shift()
+    websites.shift();
+}
 
 // Display the updated list of websites
 displayWebsites(websites);
-
-// Comments throughout explain each step and use of array methods
