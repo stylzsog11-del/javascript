@@ -9,33 +9,22 @@ const quotes = [
 
 // Prompt user for a number
 let userNum = prompt("Enter a number to get your quote of the day:");
-
-// Convert input to a number (differentiate data types)
 userNum = Number(userNum);
-
-// Use modulus to get a quote index, default to 0 if invalid
-let index = 0;
-if (!isNaN(userNum) && userNum !== null) {
-    index = Math.abs(userNum) % quotes.length;
-}
+const index = userNum % quotes.length;
 
 // Display the selected quote
-const quoteElem = document.getElementById("quote");
-if (quoteElem) {
-    quoteElem.textContent = quotes[index];
-}
+document.getElementById("quote").textContent = quotes[index];
 
-// Array of favorite website URLs
+// Array of 3 favorite website URLs
 let websites = [
     "https://www.mozilla.org/",
     "https://www.w3schools.com/",
-    "https://developer.mozilla.org/",
+    "https://developer.mozilla.org/"
 ];
 
-// Function to display an array of URLs as clickable links
+// Function to display websites as links
 function displayWebsites(arr) {
     const ul = document.getElementById("websites");
-    if (!ul) return;
     ul.innerHTML = "";
     for (let i = 0; i < arr.length; i++) {
         const li = document.createElement("li");
@@ -48,18 +37,12 @@ function displayWebsites(arr) {
     }
 }
 
-// Display the initial list of websites
-displayWebsites(websites);
-
-// Prompt the user for their favorite website URL
+// Prompt for user's favorite website and add to array
 let favSite = prompt("Enter your favorite website URL (include https://):");
+websites.push(favSite);
 
-// Add the new site to the end of the array using push(), if input is valid
-if (favSite && favSite.startsWith("http")) {
-    websites.push(favSite);
-    // Delete the first website from the array using shift()
-    websites.shift();
-}
+// Delete the first website from the array
+websites.shift();
 
 // Display the updated list of websites
 displayWebsites(websites);
