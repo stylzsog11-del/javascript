@@ -30,7 +30,6 @@ let websites = [
     "https://www.mozilla.org/",
     "https://www.w3schools.com/",
     "https://developer.mozilla.org/",
-    "https://www.freecodecamp.org/",
 ];
 
 // Function to display an array of URLs as clickable links
