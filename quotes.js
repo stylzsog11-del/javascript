@@ -21,8 +21,7 @@ let websites = [
     "https://www.w3schools.com/",
     "https://developer.mozilla.org/"
 ];
-document.getElementById("websites").textContent = websites;
-// Function to display websites as links
+document.write(websites);
 function displayWebsites(arr) {
     const ul = document.getElementById("websites");
     ul.innerHTML = "";
