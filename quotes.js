@@ -10,6 +10,11 @@ const quotes = [
 // Prompt user for a number
 let userNum = prompt("Enter a number to get your quote of the day:");
 userNum = Number(userNum);
+if (isNaN(userNum) || !isFinite(userNum)) {
+    alert("Please enter a valid number.");
+    // Optionally, you could set a default index or exit the function here
+    userNum = 0;
+}
 const index = userNum % quotes.length;
 
 // Display the selected quote
@@ -21,8 +26,6 @@ let websites = [
     "https://www.w3schools.com/",
     "https://developer.mozilla.org/"
 ];
-
-// Function to display websites as links
 function displayWebsites(arr) {
     const ul = document.getElementById("websites");
     ul.innerHTML = "";
