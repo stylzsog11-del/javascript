@@ -1,51 +1,16 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-}
-
-header {
-    background: #333;
-    color: #fff;
-    padding: 10px;
-}
-
-nav a {
-    color: #fff;
-    margin-right: 10px;
-    text-decoration: none;
-}
-
-div {
-    border: 1px solid #ccc;
-    padding: 10px;
-    background: #fff;
-}
-
-.highlight {
-    color: #e67e22;
-    font-weight: bold;
-}
-
-#special {
-    font-size: 1.2em;
-    background: #dff0d8;
-}
-
-body {
     background: #f0f4f8;
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
-
 h1 {
     color: #2a5d84;
     text-align: center;
     margin-top: 40px;
     margin-bottom: 20px;
 }
-
-#game-result {
+#quiz-result {
     background: #fff;
     max-width: 400px;
     margin: 30px auto;
@@ -55,16 +20,4 @@ h1 {
     font-size: 1.2em;
     color: #333;
     text-align: center;
-}
-
-@media (max-width: 600px) {
-    #game-result {
-        max-width: 95vw;
-        padding: 18px 6vw;
-        font-size: 1em;
-    }
-    h1 {
-        font-size: 1.4em;
-        margin-top: 20px;
-    }
 }
