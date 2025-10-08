@@ -6,7 +6,7 @@ function displayCurrentDate() {
     const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
     const formattedDate = date.toLocaleDateString(undefined, options);
     const formattedTime = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    document.getElementById('currentDate').innerText = `Today is ${formattedDate}, ${formattedTime}`;
+    document.getElementById('current-date').innerText = `Today is ${formattedDate}, ${formattedTime}`;
 }
 
 // Function to create a personalized greeting based on the time of day
@@ -26,7 +26,9 @@ function personalizedGreeting() {
             greeting = "Good Evening";
     }
 
-    const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+    const capitalizedName = name && name.trim() !== ""
+        ? name.charAt(0).toUpperCase() + name.slice(1)
+        : "Guest";
     document.getElementById('greeting').innerText = `${greeting} ${capitalizedName}!`;
 }
 
@@ -38,22 +40,40 @@ function validateEmail() {
     do {
         email = prompt("Please enter your email address:");
         if (!emailRegex.test(email)) {
-            alert("Invalid email address. Please try again.");
+    } while (email !== null && !emailRegex.test(email));
         }
     } while (!emailRegex.test(email));
 
     const [username, domain] = email.split('@');
     document.getElementById('username').innerText = `Username: ${username.toUpperCase()}`;
-    document.getElementById('domain').innerText = `Domain: ${domain}`;
+    const domainElement = document.getElementById('domain');
+    if (domainElement) {
+        domainElement.innerText = `Domain: ${domain}`;
+    }
+        usernameElem.innerText = `Username: ${username.toUpperCase()}`;
+    }
+    const domainElem = document.getElementById('domain');
+    if (domainElem) {
+        domainElem.innerText = `Domain: ${domain}`;
+    }
 }
 
 // Function to get a random quote from the quotes array
 function getRandomQuote() {
     fetch('assets/quotes.json')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             const randomIndex = Math.floor(Math.random() * data.length);
-            document.getElementById('quoteOfTheDay').innerText = data[randomIndex];
+            document.getElementById('quote-of-the-day').innerText = data[randomIndex];
+        })
+        .catch(error => {
+            document.getElementById('quote-of-the-day').innerText = "Could not load quote. Please try again later.";
+            console.error('Error fetching quote:', error);
         });
 }
 
