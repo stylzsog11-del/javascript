@@ -1,89 +1,54 @@
-// Quote of the Day array
-const quotes = [
+// Multi-dimensional array with questions (each worth 3 points)
+var questions = [
+    ["What is the capital of France?", 2, "Berlin", "Madrid", "Paris"],
+    ["Which planet is known as the Red Planet?", 1, "Earth", "Mars", "Jupiter"],
+    ["What is the largest ocean on Earth?", 2, "Atlantic Ocean", "Indian Ocean", "Pacific Ocean"]
+];
+
+// Counter to track questions
+var count = 0;
+var totalScore = 0;
+
+// Quote of the day array
+var quotes = [
     "The only way to do great work is to love what you do. - Steve Jobs",
-    "Innovation distinguishes between a leader and a follower. - Steve Jobs", 
+    "Innovation distinguishes between a leader and a follower. - Steve Jobs",
     "Life is what happens to you while you're busy making other plans. - John Lennon",
     "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
     "It is during our darkest moments that we must focus to see the light. - Aristotle"
 ];
 
-// Trivia questions array (all answers in lowercase)
-const triviaQuestions = [
-    {
-        question: "What is the capital of France?",
-        answer: "paris"
-    },
-    {
-        question: "What is 2 + 2?",
-        answer: "four"
-    },
-    {
-        question: "What color do you get when you mix red and blue?",
-        answer: "purple"
-    },
-    {
-        question: "What is the largest planet in our solar system?",
-        answer: "jupiter"
-    },
-    {
-        question: "Who wrote Romeo and Juliet?",
-        answer: "shakespeare"
-    },
-    {
-        question: "What is the chemical symbol for water?",
-        answer: "h2o"
-    },
-    {
-        question: "How many continents are there?",
-        answer: "seven"
-    },
-    {
-        question: "What is the fastest land animal?",
-        answer: "cheetah"
-    },
-    {
-        question: "What year did World War II end?",
-        answer: "1945"
-    }
-];
-
-let userScore = 0;
+// Initialize the game when page loads
+window.onload = function() {
+    displayDateTime();
+    displayGreeting();
+    displayQuoteOfDay();
+    getUserInfo();
+    loadPlayButton();
+};
 
 // Function to get current date and time in user-friendly format
-// Uses Date object methods: getFullYear(), getMonth(), getDate(), getDay(), getHours(), getMinutes()
-function getCurrentDate() {
-    const now = new Date();
-    
-    // Arrays for converting numeric values to names
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 
-                   'July', 'August', 'September', 'October', 'November', 'December'];
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    
-    // Using multiple Date object methods
-    const dayName = days[now.getDay()];           // getDay() method
-    const monthName = months[now.getMonth()];     // getMonth() method
-    const date = now.getDate();                   // getDate() method
-    const year = now.getFullYear();               // getFullYear() method
-    const hours = now.getHours();                 // getHours() method
-    const minutes = now.getMinutes();             // getMinutes() method
-    
-    // Format time with leading zeros if needed
-    const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    const displayHours = hours % 12 || 12;
-    
-    return `${dayName}, ${monthName} ${date}, ${year} at ${displayHours}:${formattedMinutes} ${ampm}`;
+function displayDateTime() {
+    var now = new Date();
+    var options = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric'
+    };
+    var userFriendlyDate = now.toLocaleDateString('en-US', options);
+    document.getElementById('current-date').innerHTML = '<h3>Current Date & Time:</h3><p>' + userFriendlyDate + '</p>';
 }
 
 // Function to create personalized greeting based on time
-// Uses switch statement as required
-function createGreeting() {
-    const now = new Date();
-    const hour = now.getHours();  // Using getHours() method
-    let greeting;
+function displayGreeting() {
+    var now = new Date();
+    var hour = now.getHours();
+    var greeting;
     
-    // Switch statement for time-based greeting (REQUIRED)
-    switch (true) {
+    switch(true) {
         case (hour >= 5 && hour < 12):
             greeting = "Good Morning";
             break;
@@ -97,134 +62,101 @@ function createGreeting() {
             greeting = "Good Night";
     }
     
-    // Get user's name and capitalize first letter (REQUIRED)
-    let userName = prompt("Please enter your name:");
-    if (userName && userName.length > 0) {  // Using length property
-        userName = capitalizeFirstLetter(userName);
-        return `${greeting}, ${userName}!`;
+    var name = prompt("Please enter your name:");
+    if (name) {
+        // Convert first letter to uppercase
+        name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+        document.getElementById('greeting').innerHTML = '<h3>' + greeting + ', ' + name + '!</h3>';
     }
-    return `${greeting}!`;
 }
 
-// Function to capitalize first letter of name (REQUIRED)
-// Uses string methods: charAt(), toUpperCase(), slice(), toLowerCase()
-function capitalizeFirstLetter(name) {
-    if (name.length === 0) return name;  // Using length property
-    
-    // Using string methods as required
-    const firstChar = name.charAt(0).toUpperCase();  // charAt() and toUpperCase()
-    const restOfName = name.slice(1).toLowerCase();  // slice() and toLowerCase()
-    
-    return firstChar + restOfName;  // String concatenation
+// Function to display random quote of the day
+function displayQuoteOfDay() {
+    var randomIndex = Math.floor(Math.random() * quotes.length);
+    document.getElementById('quote-of-the-day').innerHTML = '<h3>Quote of the Day:</h3><p><em>' + quotes[randomIndex] + '</em></p>';
 }
 
-// Function to validate email using regular expression (REQUIRED)
-function validateEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-// Function to get and validate user email (REQUIRED)
-// Uses string methods: split(), toUpperCase()
-function getUserEmail() {
-    let email;
-    let isValid = false;
+// Function to get and validate user email
+function getUserInfo() {
+    var email;
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
-    while (!isValid) {
+    do {
         email = prompt("Please enter your email address:");
-        if (email && validateEmail(email)) {
-            isValid = true;
-            
-            // Split email at @ symbol (REQUIRED string method)
-            const emailParts = email.split('@');  // split() method
-            const username = emailParts[0].toUpperCase();  // toUpperCase() method
-            const domain = emailParts[1];
-            
-            // Display username and domain separately (REQUIRED)
-            const userInfo = document.createElement('div');
-            userInfo.innerHTML = `<p><strong>Email validated!</strong><br>Username: ${username}<br>Domain: ${domain}</p>`;
-            document.getElementById('greeting').appendChild(userInfo);
-        } else {
+        if (!email) return; // User cancelled
+        
+        if (!emailRegex.test(email)) {
             alert("Invalid email address. Please try again.");
         }
-    }
-    return email;
-}
-
-// Function to display random quote of the day (REQUIRED)
-// Uses Math.random() and Math.floor()
-function displayQuoteOfDay() {
-    const randomIndex = Math.floor(Math.random() * 5); // Random number 0-4 (REQUIRED)
-    return quotes[randomIndex];
-}
-
-// Function to run the trivia quiz (REQUIRED improvements)
-function runTriviaQuiz() {
-    userScore = 0;
-    const totalQuestions = triviaQuestions.length;  // Using length property
+    } while (!emailRegex.test(email));
     
-    for (let i = 0; i < totalQuestions; i++) {
-        const question = triviaQuestions[i];
-        let userAnswer = prompt(`Question ${i + 1}: ${question.question}`);
+    // Split email at @ symbol
+    var emailParts = email.split('@');
+    var username = emailParts[0].toUpperCase();
+    var domain = emailParts[1];
+    
+    document.getElementById('user-info').innerHTML = '<h3>User Information:</h3><p>Username: ' + username + '</p><p>Domain: ' + domain + '</p>';
+}
+
+// Function to load the Play Game button
+function loadPlayButton() {
+    document.getElementById('prompt').innerHTML = '<button onclick="playGame()">Play Game</button>';
+}
+
+// Function to play the game
+function playGame() {
+    if (count < questions.length) {
+        // Get current question
+        var currentQuestion = questions[count].slice(); // Make a copy
         
-        if (userAnswer) {
-            // Convert user answer to lowercase for comparison (REQUIRED)
-            userAnswer = userAnswer.toLowerCase().trim();  // toLowerCase() method
-            
-            if (userAnswer === question.answer) {
-                userScore++;
-                alert("Correct!");
-            } else {
-                alert(`Incorrect. The correct answer is: ${question.answer}`);
-            }
+        // Display question
+        document.getElementById('question').innerHTML = currentQuestion[0];
+        
+        // Get correct answer index
+        var correctIndex = currentQuestion[1];
+        
+        // Create answer choices
+        var answersList = '<ul>';
+        for (var i = 2; i < currentQuestion.length; i++) {
+            var answerIndex = i - 2; // Convert to 0, 1, 2 indexing
+            answersList += '<li><button class="answer-choice" onclick="checkAnswer(' + answerIndex + ', ' + correctIndex + ')">' + currentQuestion[i] + '</button></li>';
         }
-    }
-    
-    // Calculate percentage and round to 2 decimal places (REQUIRED)
-    const percentage = (userScore / totalQuestions) * 100;
-    const roundedPercentage = percentage.toFixed(2);  // toFixed() method for 2 decimal places
-    
-    return {
-        score: userScore,
-        total: totalQuestions,
-        percentage: Number(roundedPercentage)  // Number() method to convert back to number
-    };
-}
-
-// Main function to initialize everything
-function initializeGame() {
-    try {
-        // Display current date using Date object methods (REQUIRED)
-        document.getElementById('current-date').innerHTML = 
-            `<h3>Current Date & Time</h3><p>${getCurrentDate()}</p>`;
+        answersList += '</ul>';
         
-        // Create and display greeting with switch statement (REQUIRED)
-        const greeting = createGreeting();
-        document.getElementById('greeting').innerHTML = 
-            `<h3>Welcome!</h3><p>${greeting}</p>`;
-        
-        // Get and validate user email with regex (REQUIRED)
-        getUserEmail();
-        
-        // Display quote of the day with random selection (REQUIRED)
-        const quoteOfDay = displayQuoteOfDay();
-        document.getElementById('quote-of-the-day').innerHTML = 
-            `<h3>Quote of the Day</h3><p>"${quoteOfDay}"</p>`;
-        
-        // Run trivia quiz with string improvements (REQUIRED)
-        const quizResults = runTriviaQuiz();
-        
-        // Display score with percentage calculation (REQUIRED)
-        document.getElementById('score').innerHTML = 
-            `Your Score: ${quizResults.score} out of ${quizResults.total} (${quizResults.percentage}%)`;
-            
-    } catch (error) {
-        console.error('Error initializing game:', error);
-        alert('An error occurred while loading the game. Please refresh and try again.');
+        document.getElementById('answers').innerHTML = answersList;
+        document.getElementById('prompt').innerHTML = '<p>Click the best answer:</p>';
+        document.getElementById('feedback').innerHTML = '';
     }
 }
 
-// Start the game when page loads
-window.onload = function() {
-    initializeGame();
-};
+// Function to check the answer
+function checkAnswer(chosenIndex, correctIndex) {
+    var feedback = '';
+    
+    if (chosenIndex === correctIndex) {
+        feedback = '<p style="color: green;">Correct! You earned 3 points.</p>';
+        totalScore += 3;
+    } else {
+        feedback = '<p style="color: red;">Incorrect. The correct answer was: ' + questions[count][correctIndex + 2] + '</p>';
+    }
+    
+    document.getElementById('feedback').innerHTML = feedback;
+    count++;
+    
+    // Check if game is finished
+    if (count >= questions.length) {
+        // Calculate percentage
+        var percentage = (totalScore / 9) * 100;
+        var roundedPercentage = Math.round(percentage * 100) / 100; // Round to 2 decimal places
+        
+        document.getElementById('score').innerHTML = '<h3>Game Complete!</h3><p>Your score: ' + totalScore + ' out of 9 points</p><p>Percentage: ' + roundedPercentage + '%</p>';
+        document.getElementById('prompt').innerHTML = '<button onclick="location.reload()">Restart Game</button>';
+        document.getElementById('question').innerHTML = '';
+        document.getElementById('answers').innerHTML = '';
+    } else {
+        // Continue game
+        setTimeout(function() {
+            document.getElementById('prompt').innerHTML = '<button onclick="playGame()">Next Question</button>';
+        }, 2000);
+    }
+}

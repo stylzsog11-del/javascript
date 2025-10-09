@@ -4,22 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trivia Quiz Game</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .answer-choice {
+            display: block;
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        .answer-choice:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to the Trivia Quiz Game!</h1>
-    </header>
+    <h1>Trivia Quiz Game</h1>
     
-    <section id="greeting"></section>
-    <section id="current-date"></section>
-    <section id="quote-of-the-day"></section>
-    <section id="quiz-section">
-        <!-- Quiz questions will be dynamically inserted here -->
-    </section>
-    <section id="score-section">
-        <p id="score"></p>
-    </section>
+    <div id="greeting" class="section"></div>
+    <div id="current-date" class="section"></div>
+    <div id="quote-of-the-day" class="section"></div>
+    <div id="user-info" class="section"></div>
+    
+    <div id="prompt" class="section"></div>
+    <p id="question"></p>
+    <ul id="answers"></ul>
+    <div id="feedback" class="section"></div>
+    <div id="score" class="section"></div>
 
     <script src="trivia.js"></script>
 </body>
