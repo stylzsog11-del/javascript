@@ -1,8 +1,8 @@
 // Multi-dimensional array with questions (each worth 3 points)
 var questions = [
-    ["What is the capital of France?", 2, "Berlin", "Madrid", "Paris"],
-    ["Which planet is known as the Red Planet?", 1, "Earth", "Mars", "Jupiter"],
-    ["What is the largest ocean on Earth?", 2, "Atlantic Ocean", "Indian Ocean", "Pacific Ocean"]
+    ["What is the capital of France?", 2, "berlin", "madrid", "paris"],
+    ["Which planet is known as the Red Planet?", 1, "earth", "mars", "jupiter"],
+    ["What is the largest ocean on Earth?", 2, "atlantic ocean", "indian ocean", "pacific ocean"]
 ];
 
 // Counter to track questions
@@ -30,15 +30,23 @@ window.onload = function() {
 // Function to get current date and time in user-friendly format
 function displayDateTime() {
     var now = new Date();
-    var options = { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric'
-    };
-    var userFriendlyDate = now.toLocaleDateString('en-US', options);
+    var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var monthNames = ["January", "February", "March", "April", "May", "June", 
+                     "July", "August", "September", "October", "November", "December"];
+    
+    var dayName = dayNames[now.getDay()];
+    var monthName = monthNames[now.getMonth()];
+    var day = now.getDate();
+    var year = now.getFullYear();
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    
+    hours = hours % 12;
+    hours = hours ? hours : 12; // 0 should be 12
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    
+    var userFriendlyDate = dayName + ", " + monthName + " " + day + ", " + year + " at " + hours + ":" + minutes + " " + ampm;
     document.getElementById('current-date').innerHTML = '<h3>Current Date & Time:</h3><p>' + userFriendlyDate + '</p>';
 }
 
@@ -72,7 +80,7 @@ function displayGreeting() {
 
 // Function to display random quote of the day
 function displayQuoteOfDay() {
-    var randomIndex = Math.floor(Math.random() * quotes.length);
+    var randomIndex = Math.floor(Math.random() * 5); // Generate number between 0 and 4
     document.getElementById('quote-of-the-day').innerHTML = '<h3>Quote of the Day:</h3><p><em>' + quotes[randomIndex] + '</em></p>';
 }
 
@@ -110,7 +118,7 @@ function playGame() {
         var currentQuestion = questions[count].slice(); // Make a copy
         
         // Display question
-        document.getElementById('question').innerHTML = currentQuestion[0];
+        document.getElementById('question').innerHTML = '<h3>Question ' + (count + 1) + ':</h3><p>' + currentQuestion[0] + '</p>';
         
         // Get correct answer index
         var correctIndex = currentQuestion[1];
@@ -134,10 +142,10 @@ function checkAnswer(chosenIndex, correctIndex) {
     var feedback = '';
     
     if (chosenIndex === correctIndex) {
-        feedback = '<p style="color: green;">Correct! You earned 3 points.</p>';
+        feedback = '<p style="color: green; font-weight: bold;">Correct! You earned 3 points.</p>';
         totalScore += 3;
     } else {
-        feedback = '<p style="color: red;">Incorrect. The correct answer was: ' + questions[count][correctIndex + 2] + '</p>';
+        feedback = '<p style="color: red; font-weight: bold;">Incorrect. The correct answer was: ' + questions[count][correctIndex + 2] + '</p>';
     }
     
     document.getElementById('feedback').innerHTML = feedback;
@@ -147,9 +155,9 @@ function checkAnswer(chosenIndex, correctIndex) {
     if (count >= questions.length) {
         // Calculate percentage
         var percentage = (totalScore / 9) * 100;
-        var roundedPercentage = Math.round(percentage * 100) / 100; // Round to 2 decimal places
+        var roundedPercentage = parseFloat(percentage.toFixed(2)); // Round to 2 decimal places
         
-        document.getElementById('score').innerHTML = '<h3>Game Complete!</h3><p>Your score: ' + totalScore + ' out of 9 points</p><p>Percentage: ' + roundedPercentage + '%</p>';
+        document.getElementById('score').innerHTML = '<h3>Game Complete!</h3><p>Your final score: ' + totalScore + ' out of 9 points</p><p>Percentage: ' + roundedPercentage + '%</p>';
         document.getElementById('prompt').innerHTML = '<button onclick="location.reload()">Restart Game</button>';
         document.getElementById('question').innerHTML = '';
         document.getElementById('answers').innerHTML = '';
