@@ -71,98 +71,163 @@ function playGame() {
     document.getElementById('feedback').innerHTML = '';
 }
 
-// Check Answer function
+// ...existing code...
+
+// Enhanced Check Answer function that checks submitted answers and returns user results
 function checkAnswer(selectedIndex, correctIndex) {
     var feedback = document.getElementById('feedback');
+    var isCorrect = false;
     
     // Store user answer in array
     userAnswers[count] = selectedIndex;
     
+    // Check the submitted answer for correct response
     if (selectedIndex === correctIndex) {
         feedback.innerHTML = 'Correct! Well done!';
         feedback.className = 'correct';
         score++;
+        isCorrect = true;
     } else {
         feedback.innerHTML = 'Incorrect! The correct answer was option ' + (correctIndex + 1) + '.';
         feedback.className = 'incorrect';
+        isCorrect = false;
     }
     
+    // Increment question counter
     count++;
     
-    // Check if more questions available using array length
-    if (gameQuestions.length > 0) {
-        document.getElementById('prompt').innerHTML = '<button onclick="playGame()">Continue Game</button>';
+    // Conditional to compare question index to the question counter
+    // Check if current question index (count) has reached the total number of questions
+    if (count >= questions.length) {
+        // All questions have been answered - terminate the game
+        terminateGame();
     } else {
-        // Game over - show results after delay
-        setTimeout(showGameResults, 2000);
+        // More questions available - continue the game
+        if (gameQuestions.length > 0) {
+            document.getElementById('prompt').innerHTML = '<button onclick="playGame()">Continue Game</button>';
+        } else {
+            // Fallback in case gameQuestions array is empty but count indicates more questions
+            terminateGame();
+        }
     }
+    
+    // Return user results object
+    return {
+        selectedAnswer: selectedIndex,
+        correctAnswer: correctIndex,
+        isCorrect: isCorrect,
+        currentScore: score,
+        questionNumber: count,
+        totalQuestions: questions.length,
+        gameComplete: (count >= questions.length)
+    };
 }
 
-// Show final game results with array review
-function showGameResults() {
-    var reviewHTML = '<h3>Game Complete!</h3>';
-    reviewHTML += '<p>Final Score: ' + score + ' out of ' + questions.length + '</p>';
-    reviewHTML += '<h4>Answer Review:</h4><ul>';
+// Function to terminate the game when all questions have been answered
+function terminateGame() {
+    // Clear any continue buttons
+    document.getElementById('prompt').innerHTML = '<p>Game completing...</p>';
     
-    // Loop through answers using forEach
+    // Show results after a brief delay to allow user to see final feedback
+    setTimeout(function() {
+        showGameResults();
+        
+        // Prompt the user to restart the game
+        setTimeout(function() {
+            var restartPrompt = confirm("Would you like to play again?");
+            if (restartPrompt) {
+                restartGame();
+            } else {
+                document.getElementById('prompt').innerHTML = '<p>Thanks for playing! <button onclick="restartGame()">Play Again</button></p>';
+            }
+        }, 3000); // Show restart prompt after 3 seconds
+        
+    }, 1500); // Brief delay before showing results
+}
+
+// Enhanced Show final game results function
+function showGameResults() {
+    var reviewHTML = '<h3>🎉 Game Complete! 🎉</h3>';
+    
+    // Calculate percentage score
+    var percentage = Math.round((score / questions.length) * 100);
+    
+    reviewHTML += '<div class="final-score">';
+    reviewHTML += '<p><strong>Final Score: ' + score + ' out of ' + questions.length + '</strong></p>';
+    reviewHTML += '<p>Percentage: ' + percentage + '%</p>';
+    
+    // Add performance message based on score
+    if (percentage >= 90) {
+        reviewHTML += '<p>🌟 Excellent work!</p>';
+    } else if (percentage >= 70) {
+        reviewHTML += '<p>👍 Good job!</p>';
+    } else if (percentage >= 50) {
+        reviewHTML += '<p>📚 Keep studying!</p>';
+    } else {
+        reviewHTML += '<p>💪 Better luck next time!</p>';
+    }
+    
+    reviewHTML += '</div>';
+    reviewHTML += '<h4>📋 Answer Review:</h4><ul>';
+    
+    // Loop through answers using forEach to show detailed results
     questions.forEach(function(question, index) {
         var userAnswer = userAnswers[index];
         var correctAnswer = correctAnswers[index];
         var answerOptions = [question[2], question[3], question[4]];
         
-        reviewHTML += '<li><strong>' + question[0] + '</strong><br>';
-        reviewHTML += 'Your answer: ' + answerOptions[userAnswer];
+        reviewHTML += '<li class="review-item">';
+        reviewHTML += '<strong>Question ' + (index + 1) + ': ' + question[0] + '</strong><br>';
+        reviewHTML += 'Your answer: <span class="user-answer">' + answerOptions[userAnswer] + '</span>';
         
         if (userAnswer === correctAnswer) {
-            reviewHTML += ' ✓ (Correct)';
+            reviewHTML += ' <span class="correct-mark">✓ Correct</span>';
         } else {
-            reviewHTML += ' ✗ (Incorrect - Correct answer: ' + answerOptions[correctAnswer] + ')';
+            reviewHTML += ' <span class="incorrect-mark">✗ Incorrect</span><br>';
+            reviewHTML += 'Correct answer: <span class="correct-answer">' + answerOptions[correctAnswer] + '</span>';
         }
         reviewHTML += '</li>';
     });
     
     reviewHTML += '</ul>';
     
+    // Display the complete results
     document.getElementById('question').innerHTML = reviewHTML;
     document.getElementById('answers').innerHTML = '';
     document.getElementById('feedback').innerHTML = '';
     document.getElementById('score').innerHTML = '';
-    document.getElementById('prompt').innerHTML = '<button onclick="restartGame()">Restart Game</button>';
+    document.getElementById('prompt').innerHTML = '<button onclick="restartGame()">🔄 Restart Game</button>';
 }
 
-// Restart game function
+// Enhanced Restart game function
 function restartGame() {
-    initGame();
-}
-
-// Utility function to add new questions to the array
-function addQuestion(questionText, correctIndex, answer1, answer2, answer3) {
-    var newQuestion = [questionText, correctIndex, answer1, answer2, answer3];
-    questions.push(newQuestion); // Add to end of array
-}
-
-// Utility function to get a random question (bonus feature)
-function getRandomQuestion() {
-    if (questions.length === 0) return null;
+    // Confirm restart action
+    console.log("Restarting game - Question counter reset from " + count + " to 0");
     
-    var randomIndex = Math.floor(Math.random() * questions.length);
-    return questions[randomIndex];
-}
-
-// Utility function to shuffle questions array (bonus feature)
-function shuffleQuestions() {
-    gameQuestions = questions.map(copyQuestion); // Create working copy
-    
-    // Simple shuffle algorithm
-    for (var i = gameQuestions.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = gameQuestions[i];
-        gameQuestions[i] = gameQuestions[j];
-        gameQuestions[j] = temp;
-    }
-}
-
-// Initialize game when page loads
-window.onload = function() {
+    // Reset all game state
     initGame();
-};
+    
+    // Optional: Show restart message
+    document.getElementById('feedback').innerHTML = '<p style="color: blue;">🎮 New game started! Good luck!</p>';
+    setTimeout(function() {
+        document.getElementById('feedback').innerHTML = '';
+    }, 2000);
+}
+
+// Utility function to get current game status
+function getGameStatus() {
+    return {
+        currentQuestion: count + 1,
+        totalQuestions: questions.length,
+        currentScore: score,
+        questionsRemaining: questions.length - count,
+        gameProgress: Math.round((count / questions.length) * 100) + '%'
+    };
+}
+
+// Utility function to check if game should terminate
+function shouldTerminateGame() {
+    return count >= questions.length;
+}
+
+// ...existing code...
