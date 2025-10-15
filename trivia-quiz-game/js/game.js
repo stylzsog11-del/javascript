@@ -71,8 +71,6 @@ function playGame() {
     document.getElementById('feedback').innerHTML = '';
 }
 
-// ...existing code...
-
 // Enhanced Check Answer function that checks submitted answers and returns user results
 function checkAnswer(selectedIndex, correctIndex) {
     var feedback = document.getElementById('feedback');
@@ -96,19 +94,17 @@ function checkAnswer(selectedIndex, correctIndex) {
     // Increment question counter
     count++;
     
-    // Conditional to compare question index to the question counter
     // Check if current question index (count) has reached the total number of questions
     if (count >= questions.length) {
         // All questions have been answered - terminate the game
-        terminateGame();
+        setTimeout(function() {
+            terminateGame();
+        }, 2000); // Give user time to see feedback
     } else {
         // More questions available - continue the game
-        if (gameQuestions.length > 0) {
+        setTimeout(function() {
             document.getElementById('prompt').innerHTML = '<button onclick="playGame()">Continue Game</button>';
-        } else {
-            // Fallback in case gameQuestions array is empty but count indicates more questions
-            terminateGame();
-        }
+        }, 2000);
     }
     
     // Return user results object
@@ -230,4 +226,7 @@ function shouldTerminateGame() {
     return count >= questions.length;
 }
 
-// ...existing code...
+// Initialize the game when page loads
+window.onload = function() {
+    initGame();
+};
