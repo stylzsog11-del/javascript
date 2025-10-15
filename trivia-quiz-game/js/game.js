@@ -38,45 +38,52 @@ function copyQuestion(question) {
     return question.slice(); // Creates a shallow copy of the array
 }
 
-// Play Game function
+// Play Game function - Modified to match requirements exactly
 function playGame() {
-    if (gameQuestions.length === 0) {
-        // No more questions, show final score and review
-        showGameResults();
+    if (count >= questions.length) {
+        terminateGame();
         return;
     }
 
-    // Get current question using shift() to remove from beginning
-    var currentQuestion = gameQuestions.shift();
+    // Access question at index[count] as specified
+    var currentQuestion = questions[count].slice(); // Make a copy to work with
     
-    // Extract question parts using array indexing
-    var questionText = currentQuestion[0]; // First element
-    var correctIndex = currentQuestion[1]; // Second element
-    var answers = [currentQuestion[2], currentQuestion[3], currentQuestion[4]]; // Remaining elements
-    
-    // Store correct answer for later review
-    correctAnswers[count] = correctIndex;
-    
-    // Display question
+    // Post the question to HTML (first element)
+    var questionText = currentQuestion[0];
     document.getElementById('question').innerHTML = questionText;
     
-    // Create answer list using array iteration
+    // Remove question from working copy using shift()
+    currentQuestion.shift();
+    
+    // Access correct answer index (now at index[0]) 
+    var correctIndex = currentQuestion[0];
+    
+    // Remove correct answer index using shift()
+    currentQuestion.shift();
+    
+    // Remaining elements are the answer choices
+    var answers = currentQuestion; // ["Answer 1", "Answer 2", "Answer 3"]
+    
+    // Create list of answers with onClick attributes as specified
     var answersList = '';
     answers.forEach(function(answer, index) {
         answersList += '<li><a href="#" onclick="checkAnswer(' + index + ', ' + correctIndex + '); return false;">' + answer + '</a></li>';
     });
     
+    // Post answer list to HTML
     document.getElementById('answers').innerHTML = answersList;
+    
+    // Add prompt for user to click best answer
     document.getElementById('prompt').innerHTML = '<p>Click the best answer:</p>';
     document.getElementById('feedback').innerHTML = '';
 }
 
-// Enhanced Check Answer function that checks submitted answers and returns user results
+// Enhanced Check Answer function
 function checkAnswer(selectedIndex, correctIndex) {
     var feedback = document.getElementById('feedback');
     var isCorrect = false;
     
-    // Store user answer in array
+    // Store user answer
     userAnswers[count] = selectedIndex;
     
     // Check the submitted answer for correct response
@@ -94,20 +101,19 @@ function checkAnswer(selectedIndex, correctIndex) {
     // Increment question counter
     count++;
     
-    // Check if current question index (count) has reached the total number of questions
+    // Check if question counter has exceeded number of available questions
     if (count >= questions.length) {
-        // All questions have been answered - terminate the game
+        // Load Restart Game button as specified
         setTimeout(function() {
             terminateGame();
-        }, 2000); // Give user time to see feedback
+        }, 2000);
     } else {
-        // More questions available - continue the game
+        // Load Play Game button to continue as specified
         setTimeout(function() {
             document.getElementById('prompt').innerHTML = '<button onclick="playGame()">Continue Game</button>';
         }, 2000);
     }
     
-    // Return user results object
     return {
         selectedAnswer: selectedIndex,
         correctAnswer: correctIndex,
@@ -121,24 +127,13 @@ function checkAnswer(selectedIndex, correctIndex) {
 
 // Function to terminate the game when all questions have been answered
 function terminateGame() {
-    // Clear any continue buttons
-    document.getElementById('prompt').innerHTML = '<p>Game completing...</p>';
+    // Show results first
+    showGameResults();
     
-    // Show results after a brief delay to allow user to see final feedback
+    // Load Restart Game button as specified in requirements
     setTimeout(function() {
-        showGameResults();
-        
-        // Prompt the user to restart the game
-        setTimeout(function() {
-            var restartPrompt = confirm("Would you like to play again?");
-            if (restartPrompt) {
-                restartGame();
-            } else {
-                document.getElementById('prompt').innerHTML = '<p>Thanks for playing! <button onclick="restartGame()">Play Again</button></p>';
-            }
-        }, 3000); // Show restart prompt after 3 seconds
-        
-    }, 1500); // Brief delay before showing results
+        document.getElementById('prompt').innerHTML = '<button onclick="location.reload()">Restart Game</button>';
+    }, 3000);
 }
 
 // Enhanced Show final game results function
