@@ -1,19 +1,52 @@
 body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    min-height: 100vh;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.9);
+#container {
+    width: 50em;
+    margin: 1em auto;
+    background-color: rgba(255, 255, 255, 0.85);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#specials {
+    width: 12em;
+    float: right;
+    padding: .5em 1em;
+    border: medium #006400 groove;
+    border-radius: 10px;
+    margin-left: 1em;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Season-specific classes that jQuery will add */
+.Winter {
+    border-color: #00f !important;
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.3);
+}
+
+.Spring {
+    border-color: #d7d !important;
+    box-shadow: 0 0 10px rgba(221, 119, 221, 0.3);
+}
+
+.Summer {
+    border-color: #006400 !important;
+    box-shadow: 0 0 10px rgba(0, 100, 0, 0.3);
+}
+
+.Fall {
+    border-color: #930 !important;
+    box-shadow: 0 0 10px rgba(153, 51, 0, 0.3);
 }
 
 h1, h2, h3 {
@@ -21,38 +54,18 @@ h1, h2, h3 {
     margin: 20px 0;
 }
 
-h1 {
-    font-size: 2.5em;
+#seasontips ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+#seasontips h4 {
     margin-bottom: 10px;
-}
-
-h2 {
-    font-size: 1.5em;
-    font-style: italic;
-    margin-bottom: 30px;
-}
-
-h3 {
-    font-size: 1.8em;
-    margin: 30px 0 20px 0;
-}
-
-#specials {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-    border-left: 5px solid #007bff;
-}
-
-#seasontips {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
+    text-decoration: underline;
 }
 
 footer {
+    clear: both;
     text-align: center;
     margin-top: 30px;
     padding: 15px;
@@ -61,23 +74,16 @@ footer {
     border-radius: 5px;
 }
 
-/* Season-specific classes */
-.Winter {
-    border-left-color: #00f;
-}
-
-.Spring {
-    border-left-color: #d7d;
-}
-
-.Summer {
-    border-left-color: #006400;
-}
-
-.Fall {
-    border-left-color: #930;
-}
-
-strong {
-    font-weight: bold;
+/* Responsive design */
+@media (max-width: 768px) {
+    #container {
+        width: 90%;
+        margin: 0.5em auto;
+    }
+    
+    #specials {
+        float: none;
+        width: auto;
+        margin: 20px 0;
+    }
 }
