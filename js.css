@@ -87,3 +87,24 @@ footer {
         margin: 20px 0;
     }
 }
+
+/* === Seasonal Specials Styling === */
+.winter { 
+  border: 2px solid #00f; 
+  background-color: rgba(0,0,255,0.1); 
+}
+
+.spring { 
+  border: 2px solid #d7d; 
+  background-color: rgba(255,192,203,0.1); 
+}
+
+.summer { 
+  border: 2px solid #006400; 
+  background-color: rgba(0,100,0,0.1); 
+}
+
+.fall { 
+  border: 2px solid #930; 
+  background-color: rgba(139,69,19,0.1); 
+}
