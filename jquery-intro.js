@@ -28,11 +28,9 @@ var tips = [
     '<h4>Fall Garden Preparation</h4><p>Autumn is perfect for planting! Add cool-season flowers like mums and pansies. Rake leaves for your compost pile and prepare garden beds for winter. Enjoy the beautiful colors of fall dahlias and chrysanthemums.</p><ul><li>Plant fall flowers</li><li>Rake leaves for compost</li><li>Prepare beds for winter</li><li>Enjoy autumn blooms</li></ul>'
 ];
 
-/* JavaScript */
-// place this in your external JavaScript file
+// jQuery Document Ready Function
 $(document).ready(function() {
-    console.log('Ready!'); // debug to verify jQuery working. load page and check the console log (F12)
-    // jQuery function calls go here...
+    console.log('jQuery is ready!'); // Debug message
     
     // Get current date
     var currentDate = new Date();
@@ -41,30 +39,6 @@ $(document).ready(function() {
     
     // Get month name using array index
     var monthName = months[currentMonth];
-    
-    // ✅ DEMONSTRATE MORE JQUERY SELECTORS AND METHODS
-    
-    // Class selector example - add a class to container
-    $('.container').addClass('seasonal-theme');
-    
-    // Element selector with filters - style even/odd list items
-    $('#seasontips li:even').css('background-color', 'rgba(255, 255, 255, 0.3)');
-    $('#seasontips li:odd').css('background-color', 'rgba(240, 248, 255, 0.3)');
-    
-    // First and last selectors
-    $('h3:first').css('text-decoration', 'underline');
-    $('p:last').css('font-style', 'italic');
-    
-    // Using .each() function to loop through multiple elements
-    $('strong').each(function() {
-        // $(this) refers to the current strong element in the loop
-        var currentText = $(this).text();
-        $(this).attr('title', 'Bold text: ' + currentText);
-        console.log('Found strong element with text: ' + currentText);
-    });
-    
-    // Attribute manipulation examples
-    $('h1').attr('data-season', 'loading'); // Add custom attribute
     
     // Check if current month is December (index 11) - use .after() method
     if (currentMonth === 11) {
@@ -75,7 +49,7 @@ $(document).ready(function() {
     $('#month').text('Tips for ' + monthName);
     
     // Get current year and add to copyright paragraph using .append() method
-    $('#copyright').append(' ' + currentYear);
+    $('#copy').append(' ' + currentYear);
     
     // Use month number as index to specials array and modify #specials div
     $('#specials').html(specials[currentMonth]);
@@ -127,44 +101,15 @@ $(document).ready(function() {
     // Change #seasontips div to html and text from tips array using season index
     $('#seasontips').html(tips[seasonIndex]);
     
-    // Multiple CSS properties using object literal method
-    $('strong, h1, h2, h3').css({
-        'color': seasonColor,
-        'text-shadow': '1px 1px 2px rgba(0,0,0,0.3)'
-    });
-    
-    // Alternative chaining method for multiple CSS properties
-    $('footer').css('border-top', '3px solid ' + seasonColor)
-              .css('margin-top', '20px')
-              .css('padding-top', '15px');
+    // Change strong, h1, h2, and h3 tags to season color
+    $('strong, h1, h2, h3').css('color', seasonColor);
     
     // Add class to 'specials' id using season as class name
     $('#specials').addClass(season);
-    
-    // Update the data attribute with current season
-    $('h1').attr('data-season', season.toLowerCase());
-    
-    // Demonstrate .prepend() - add content at beginning
-    $('#seasontips').prepend('<p><em>Current season: ' + season + '</em></p>');
-    
-    // Demonstrate descendant selector - style links within footer
-    $('footer a').css({
-        'color': seasonColor,
-        'text-decoration': 'none',
-        'font-weight': 'bold'
-    });
     
     // Console log for debugging
     console.log('Current Month: ' + monthName);
     console.log('Season: ' + season);
     console.log('Background: ' + backgroundImage);
     console.log('Color: ' + seasonColor);
-    
-    // Demonstrate .contains() filter
-    $('p:contains("garden")').css('border-left', '3px solid ' + seasonColor);
-    
-    // Additional jQuery methods demonstration
-    console.log('Number of h3 elements: ' + $('h3').length);
-    console.log('First h3 text: ' + $('h3:first').text());
-    console.log('Container class list: ' + $('.container').attr('class'));
 });
