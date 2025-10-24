@@ -46,13 +46,13 @@ $(document).ready(function() {
     
     // ✅ REQUIREMENT 1: Get the current date
     // FOR TESTING - Choose ONE of these lines:
-    var currentDate = new Date(2024, 11, 25); // Test December to see "Happy Holidays!" message
+    //var currentDate = new Date(2024, 11, 25); // Test December to see "Happy Holidays!" message
     // var currentDate = new Date(2024, 3, 15);  // Test April (Spring)
     // var currentDate = new Date(2024, 7, 15);  // Test August (Summer)
     // var currentDate = new Date(2024, 9, 15);  // Test October (Fall)
     
     // For normal operation (uncomment this line):
-    // var currentDate = new Date();
+     var currentDate = new Date();
     
     console.log('Current date object:', currentDate);
     
