@@ -25,20 +25,34 @@ var tips = [
     '<h4>Fall Garden Preparation</h4><p>Autumn is perfect for planting! Add cool-season flowers like mums and pansies. Rake leaves for your compost pile and prepare garden beds for winter. Enjoy the beautiful colors of fall dahlias and chrysanthemums.</p><ul><li>Plant fall flowers</li><li>Rake leaves for compost</li><li>Prepare beds for winter</li><li>Enjoy autumn blooms</li></ul>'
 ];
 
+// Seasonal features array for additional dynamic content
+var seasonalFeatures = [
+    '<p><strong>Winter Features:</strong> Snow-resistant evergreens, winter bird feeding stations, and holiday decorations available now!</p>',
+    '<p><strong>Spring Features:</strong> Early blooming bulbs, garden soil amendments, and seedling starter kits are ready for planting!</p>',
+    '<p><strong>Summer Features:</strong> Heat-loving annuals, drip irrigation systems, and shade plants perfect for hot Texas summers!</p>',
+    '<p><strong>Fall Features:</strong> Autumn color trees, cool-season vegetables, and decorative gourds for harvest displays!</p>'
+];
+
+// Navigation links for each season
+var seasonalLinks = [
+    ['Winter Plant Care Guide', 'Frost Protection Tips', 'Holiday Arrangements', 'Bird Feeding Supplies'],
+    ['Spring Planting Calendar', 'Soil Preparation', 'Seed Starting Guide', 'Garden Planning'],
+    ['Summer Watering Tips', 'Heat Protection', 'Pest Control', 'Harvest Guidelines'],
+    ['Fall Planting Guide', 'Leaf Management', 'Winter Prep', 'Holiday Decorations']
+];
+
 $(document).ready(function() {
     console.log('Ready!'); // debug to verify jQuery working
     
     // ✅ REQUIREMENT 1: Get the current date
-    // REPLACE THIS LINE WITH ONE OF THE TEST DATES BELOW:
-    
-    // For normal operation (current date):
-    // var currentDate = new Date();
-    
     // FOR TESTING - Choose ONE of these lines:
     var currentDate = new Date(2024, 11, 25); // Test December to see "Happy Holidays!" message
     // var currentDate = new Date(2024, 3, 15);  // Test April (Spring)
     // var currentDate = new Date(2024, 7, 15);  // Test August (Summer)
     // var currentDate = new Date(2024, 9, 15);  // Test October (Fall)
+    
+    // For normal operation (uncomment this line):
+    // var currentDate = new Date();
     
     console.log('Current date object:', currentDate);
     
@@ -50,7 +64,7 @@ $(document).ready(function() {
     
     // ✅ REQUIREMENT 3: Use if statement for December - add h3 below h2 slogan using .after() method
     if (currentMonth === 11) { // December is index 11 (0-based)
-        $('#slogan').after('<h3 style="color: #ff0000; text-align: center; margin: 15px 0; font-style: italic;">Happy Holidays!</h3>');
+        $('#slogan').after('<h3 style="color: #ff0000; text-align: center; margin: 15px 0; font-style: italic; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">🎄 Happy Holidays! 🎄</h3>');
         console.log('December detected - Happy Holidays message added!');
     }
     
@@ -113,7 +127,12 @@ $(document).ready(function() {
     }
     
     // ✅ REQUIREMENT 8: Change page background image to seasonal image
-    $('body').css('background-image', 'url(' + backgroundImage + ')');
+    $('body').css({
+        'background-image': 'url(' + backgroundImage + ')',
+        'background-size': 'cover',
+        'background-attachment': 'fixed',
+        'background-position': 'center'
+    });
     console.log('Background image set to:', backgroundImage);
     
     // ✅ REQUIREMENT 9: Change #seasontips to html and text from tips array using season index
@@ -121,19 +140,64 @@ $(document).ready(function() {
     console.log('Seasonal tips updated with season index:', seasonIndex);
     
     // ✅ REQUIREMENT 10: Change strong, h1, h2, h3 tags to season color
-    $('strong, h1, h2, h3').css('color', seasonColor);
+    $('strong, h1, h2, h3').css({
+        'color': seasonColor,
+        'text-shadow': '1px 1px 2px rgba(0,0,0,0.3)'
+    });
     console.log('Heading colors changed to:', seasonColor);
     
     // ✅ REQUIREMENT 11: Add class to 'specials' id using season as class name
     $('#specials').addClass(season);
     console.log('Season class added to specials:', season);
     
+    // 🎯 ADDITIONAL DYNAMIC CONTENT UPDATES
+    
+    // Update seasonal features section
+    $('#seasonal-features').removeClass('hidden').find('.feature-text').html(seasonalFeatures[seasonIndex]);
+    
+    // Update last updated date
+    var updateDate = currentDate.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    });
+    $('#update-date').text(updateDate);
+    
+    // Show and populate seasonal navigation
+    $('#seasonal-nav').removeClass('hidden');
+    var navLinks = seasonalLinks[seasonIndex];
+    $('#nav-list').empty(); // Clear existing content
+    
+    // Use .each() to create navigation links
+    $.each(navLinks, function(index, linkText) {
+        $('#nav-list').append('<li><a href="#" style="color: ' + seasonColor + ';">' + linkText + '</a></li>');
+    });
+    
+    // Update order link with seasonal messaging
+    $('#order-link').css('color', seasonColor).text('Order ' + season.toLowerCase() + ' flowers for your garden!');
+    
+    // Add seasonal styling to container
+    $('#container').css({
+        'border-top': '5px solid ' + seasonColor,
+        'box-shadow': '0 0 20px rgba(0,0,0,0.3)'
+    });
+    
+    // Update tagline with seasonal information
+    $('.tagline').text('Your Dallas/Fort Worth Garden Center - ' + season + ' ' + currentYear);
+    
+    // Add seasonal class to body for additional CSS styling
+    $('body').addClass(season.toLowerCase() + '-theme');
+    
+    // Demonstrate .prepend() method
+    $('#container').prepend('<div id="seasonal-banner" style="background-color: ' + seasonColor + '; color: white; text-align: center; padding: 10px; margin: -20px -20px 20px -20px; border-radius: 10px 10px 0 0;"><strong>Now featuring ' + season + ' specials!</strong></div>');
+    
     // Final summary console output
-    console.log('=== JQUERY SEASONAL WEBSITE SUMMARY ===');
+    console.log('=== DYNAMIC CONTENT UPDATES COMPLETE ===');
     console.log('Month: ' + monthName + ' (Index: ' + currentMonth + ')');
     console.log('Season: ' + season + ' (Index: ' + seasonIndex + ')');
     console.log('Background: ' + backgroundImage);
     console.log('Color: ' + seasonColor);
     console.log('Year: ' + currentYear);
-    console.log('All requirements implemented successfully!');
+    console.log('Update Date: ' + updateDate);
+    console.log('All dynamic content successfully updated!');
 });

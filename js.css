@@ -28,83 +28,78 @@ body {
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-/* Season-specific classes that jQuery will add */
-.Winter {
-    border-color: #00f !important;
-    box-shadow: 0 0 10px rgba(0, 0, 255, 0.3);
+/* Hide elements initially that jQuery will show */
+.hidden {
+    display: none;
 }
 
-.Spring {
-    border-color: #d7d !important;
-    box-shadow: 0 0 10px rgba(221, 119, 221, 0.3);
+/* Seasonal theme classes */
+.winter-theme {
+    --seasonal-accent: #00f;
 }
 
-.Summer {
-    border-color: #006400 !important;
-    box-shadow: 0 0 10px rgba(0, 100, 0, 0.3);
+.spring-theme {
+    --seasonal-accent: #d7d;
 }
 
-.Fall {
-    border-color: #930 !important;
-    box-shadow: 0 0 10px rgba(153, 51, 0, 0.3);
+.summer-theme {
+    --seasonal-accent: #006400;
 }
 
-h1, h2, h3 {
-    text-align: center;
+.fall-theme {
+    --seasonal-accent: #930;
+}
+
+/* Seasonal features styling */
+#seasonal-features {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
     margin: 20px 0;
+    border-radius: 8px;
+    border-left: 5px solid #ccc;
 }
 
-#seasontips ul {
-    list-style-type: disc;
-    margin-left: 20px;
+/* Seasonal navigation styling */
+#seasonal-nav {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
 }
 
-#seasontips h4 {
-    margin-bottom: 10px;
+#nav-list {
+    list-style: none;
+    padding: 0;
+}
+
+#nav-list li {
+    margin: 5px 0;
+}
+
+#nav-list a {
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+#nav-list a:hover {
     text-decoration: underline;
 }
 
-footer {
-    clear: both;
-    text-align: center;
-    margin-top: 30px;
-    padding: 15px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    border-radius: 5px;
+/* Enhanced container styling */
+#container {
+    transition: all 0.3s ease;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    #container {
-        width: 90%;
-        margin: 0.5em auto;
-    }
-    
-    #specials {
-        float: none;
-        width: auto;
-        margin: 20px 0;
-    }
+/* Seasonal banner */
+#seasonal-banner {
+    font-size: 1.1em;
+    font-weight: bold;
 }
 
-/* === Seasonal Specials Styling === */
-.winter { 
-  border: 2px solid #00f; 
-  background-color: rgba(0,0,255,0.1); 
-}
-
-.spring { 
-  border: 2px solid #d7d; 
-  background-color: rgba(255,192,203,0.1); 
-}
-
-.summer { 
-  border: 2px solid #006400; 
-  background-color: rgba(0,100,0,0.1); 
-}
-
-.fall { 
-  border: 2px solid #930; 
-  background-color: rgba(139,69,19,0.1); 
+/* Last updated styling */
+.last-updated {
+    font-size: 0.9em;
+    font-style: italic;
+    color: #666;
 }

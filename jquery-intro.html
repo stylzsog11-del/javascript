@@ -14,6 +14,7 @@
     <div id="container">
         <header>
             <h1>Patti's Posies</h1>
+            <p class="tagline">Your Dallas/Fort Worth Garden Center</p>
         </header>
         <div>
             <h2 id="slogan">The Power of Flowers</h2>
@@ -37,11 +38,27 @@
                 </ul>
             </div>
             
-            <p><a href="#">Order seasonal color for your garden</a></p>
+            <!-- Optional: Add more interactive elements -->
+            <div id="seasonal-features" class="hidden">
+                <h4>Featured This Season</h4>
+                <p class="feature-text">Special seasonal content will appear here.</p>
+            </div>
+            
+            <p><a href="#" id="order-link">Order seasonal color for your garden</a></p>
+            
+            <!-- Optional: Add navigation that jQuery can populate -->
+            <nav id="seasonal-nav" class="hidden">
+                <h4>Quick Links</h4>
+                <ul id="nav-list">
+                    <!-- jQuery will populate this -->
+                </ul>
+            </nav>
+            
             <hr>
             
             <footer>
                 <p id="copyright">&copy; Copyright by Patti Burks</p>
+                <p class="last-updated">Page last updated: <span id="update-date"></span></p>
             </footer>
         </div>
     </div>
