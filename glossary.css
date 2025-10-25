@@ -80,6 +80,13 @@ nav a:hover {
   background-color: #f0f8ff;
 }
 
+/* Add smooth color transitions for headings */
 h1, h2 {
-  transition: color 0.3s ease;
+    transition: color 0.3s ease;
+    cursor: pointer; /* Shows that headings are interactive */
+}
+
+/* Optional: Add hover effect in CSS as well */
+h1:hover, h2:hover {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
