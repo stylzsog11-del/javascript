@@ -1,0 +1,123 @@
+/* Existing styles... */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+/* ✅ REQUIRED: Container positioning for rose animation */
+#container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* ✅ REQUIRED: Rose positioning and initial state */
+#rose {
+    position: absolute;
+    right: -100px;
+    top: 20px;
+    opacity: 0;
+    width: 100px;
+    height: auto;
+}
+
+/* Newsletter section styling */
+#newsletter {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+#signuplink {
+    color: #07a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#signuplink:hover {
+    text-decoration: underline;
+}
+
+#openclose {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+#newsSignup {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#newsSignup label {
+    display: block;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+#newsSignup input[type="text"], 
+#newsSignup input[type="email"] {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+
+#newsSignup input[type="submit"] {
+    background-color: #07a;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#newsSignup input[type="submit"]:hover {
+    background-color: #056;
+}
+
+/* Slogan styling for better transitions */
+#slogan {
+    text-align: center;
+    color: #07a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Other styling */
+#specials {
+    float: right;
+    width: 200px;
+    padding: 15px;
+    background-color: #e8f4f8;
+    border-radius: 8px;
+    margin: 0 0 20px 20px;
+}
+
+footer {
+    clear: both;
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #07a;
+}
+
+h2, h3 {
+    color: #056;
+}
