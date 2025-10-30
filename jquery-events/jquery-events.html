@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Events Demo - Interactive Flower Glossary</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <link href="glossary.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script src="glossary.js"></script>
+    <style>
+        /* Additional styling for the demo page */
+        .demo-header {
+            background-color: #f0f8ff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 2px solid #4CAF50;
+        }
+        .features-list {
+            background-color: #fffacd;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 5px solid #ff6600;
+        }
+        .github-info {
+            background-color: #f5f5f5;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="demo-header">
+            <h1>jQuery Events Interactive Demo</h1>
+            <p><strong>GitHub Repository:</strong> javascript/jquery-events</p>
+            <p><em>An interactive flower glossary demonstrating various jQuery event handlers</em></p>
+        </div>
+
+        <div class="features-list">
+            <h3>🎯 Interactive Features Demonstrated:</h3>
+            <ul>
+                <li><strong>Mouseover/Mouseout Events:</strong> Hover over headings to see color changes</li>
+                <li><strong>Click Events:</strong> Click on flower names to reveal botanical names</li>
+                <li><strong>Hover Events with Images:</strong> Hover over underlined flowers to see images</li>
+                <li><strong>Keypress Events:</strong> Press any letter (a-z) to jump to that section</li>
+                <li><strong>Dynamic CSS:</strong> Real-time style changes and visual feedback</li>
+            </ul>
+        </div>
+
+        <nav>
+            <p><a href="glossary.html">Original Glossary</a> | <a href="#demo">Live Demo Below</a> | <a href="#code-info">Technical Info</a></p>
+        </nav>
+
+        <div id="demo">
+            <h2>🌸 Interactive Flower Glossary Demo</h2>
+            <div class="col">
+                <div class="flower" id="a">african corn lily<span class="botanic">:&nbsp;ixia</span></div>
+                <div class="flower">african lily<span class="botanic">:&nbsp;agapanthus</span></div>
+                <div class="flower">alpine thistle<span class="botanic">:&nbsp;eryngium</span></div>
+                <div class="flower">amaryllis<span class="botanic">:&nbsp;hippeastrum</span></div>
+                <div class="flower">amazon lily<span class="botanic">:&nbsp;eucharis</span></div>
+                <div class="flower">arum<span class="botanic">:&nbsp;zantedeschia</span></div>
+                <div class="flower" id="b">baby&rsquo;s breath<span class="botanic">:&nbsp;gypsophila</span></div>
+                <div class="flower">balloon flower<span class="botanic">:&nbsp;platycodon</span></div>
+                <div class="flower">barberton daisy<span class="botanic">:&nbsp;gerbera</span></div>
+                <div class="flower">bee balm<span class="botanic">:&nbsp;monarda</span></div>
+                <div class="flower">bell flower<span class="botanic">:&nbsp;campanula</span></div>
+                <div class="flower">bells of Ireland<span class="botanic">:&nbsp;moluccella</span></div>
+                <div class="flower">bergamot<span class="botanic">:&nbsp;monarda</span></div>
+                <div class="flower">bird of paradise<span class="botanic">:&nbsp;strelizia</span></div>
+                <div class="flower">bloom<span class="botanic">:&nbsp;chrysanthemum</span></div>
+                <div class="flower">blue throatwort<span class="botanic">:&nbsp;trachelium</span></div>
+                <div class="flower">bottlebrush<span class="botanic">:&nbsp;banksia</span></div>
+                <div class="flower">brodiaea<span class="botanic">:&nbsp;triteleia (syn)</span></div>
+                <div class="flower">broom<span class="botanic">:&nbsp;genista</span></div>
+                <div class="flower" id="c">calla lily<span class="botanic">:&nbsp;zantedeschia</span></div>
+                <div class="flower">canterbury bells<span class="botanic">:&nbsp;campanula</span></div>
+                <div class="flower">carnation<span class="botanic">:&nbsp;dianthus</span></div>
+                <div class="flower">china aster<span class="botanic">:&nbsp;callistephus</span></div>
+                <div class="flower">chincerinchee<span class="botanic">:&nbsp;ornithogalum</span></div>
+                <div class="flower">chinese bellflower<span class="botanic">:&nbsp;platycodon</span></div>
+                <div class="flower">christmas rose<span class="botanic">:&nbsp;hellebore</span></div>
+                <div class="flower">cockscomb<span class="botanic">:&nbsp;celosia</span></div>
+                <div class="flower">columbine<span class="botanic">:&nbsp;aquilegia</span></div>
+                <div class="flower"><span class="pic" title="coneflower">coneflower</span><span class="botanic">:&nbsp;rudbeckia/echinacea</span></div>
+                <div class="flower">cornflower<span class="botanic">:&nbsp;centaurea</span></div>
+                <div class="flower">corsage orchid<span class="botanic">:&nbsp;cattleya</span></div>
+                <div class="flower">cosmos<span class="botanic">:&nbsp;cosmea (syn)</span></div>
+                <div class="flower">cuban lily<span class="botanic">:&nbsp;scilla</span></div>
+                <div class="flower" id="d">daffodil<span class="botanic">:&nbsp;narcissus</span></div>
+                <div class="flower">dill<span class="botanic">:&nbsp;anethum</span></div>
+                <div class="flower">drumstick<span class="botanic">:&nbsp;craspedia, eustoma, lisianthus (syn)</span></div>
+                <div class="flower" id="m">marguerite<span class="botanic">:&nbsp;chrysanthemum frutescens</span></div>
+                <div class="flower">marigold<span class="botanic">:&nbsp;calendula</span></div>
+                <div class="flower">masterwort<span class="botanic">:&nbsp;astrantia</span></div>
+                <div class="flower">michaelmas daisy<span class="botanic">:&nbsp;aster</span></div>
+                <div class="flower">mimosa<span class="botanic">:&nbsp;acacia</span></div>
+                <div class="flower">monkshood<span class="botanic">:&nbsp;aconitum</span></div>
+                <div class="flower">montbretia<span class="botanic">:&nbsp;crocosmia</span></div>
+                <div class="flower">moth orchid<span class="botanic">:&nbsp;phalenopsis</span></div>
+                <div class="flower"><span class="pic" title="mum">mum</span><span class="botanic">:&nbsp;chrysanthemum</span></div>
+                <div class="flower" id="r">red-hot poker<span class="botanic">:&nbsp;kniphofia</span></div>
+                <div class="flower"><span class="pic" title="rose">rose</span><span class="botanic">:&nbsp;rosa</span></div>
+                <div class="flower">sunflower<span class="botanic">:&nbsp;helianthus</span></div>
+                <div class="flower">sweet pea<span class="botanic">:&nbsp;lathyrus</span></div>
+                <div class="flower">tulip<span class="botanic">:&nbsp;tulipa</span></div>
+            </div>
+        </div>
+
+        <div id="code-info" class="github-info">
+            <h3>💻 Technical Implementation:</h3>
+            <p><strong>Files in this project:</strong></p>
+            <ul>
+                <li><code>jquery-events.html</code> - Main demo page (this file)</li>
+                <li><code>glossary.html</code> - Original full glossary</li>
+                <li><code>glossary.js</code> - jQuery event handlers</li>
+                <li><code>glossary.css</code> - Styling and layout</li>
+                <li><code>script.js</code> - Additional JavaScript functionality</li>
+                <li><code>*.jpg, *.png</code> - Image assets</li>
+            </ul>
+            <p><strong>jQuery Events Implemented:</strong></p>
+            <ul>
+                <li><code>mouseover/mouseout</code> - Heading color changes</li>
+                <li><code>click</code> - Show/hide botanical names</li>
+                <li><code>hover</code> - Image display on hover</li>
+                <li><code>keypress</code> - Keyboard navigation</li>
+                <li><code>$(document).ready()</code> - DOM initialization</li>
+            </ul>
+        </div>
+
+        <footer>
+            <hr>
+            <p>jQuery Events Demo | GitHub Repository: javascript/jquery-events</p>
+            <p>Brookhaven College WebDev</p>
+        </footer>
+
+        <!-- Image divs for hover effects -->
+        <div id="rose" class="imgdiv"><img src="rose.jpg" alt="rose" width="100"></div>
+        <div id="mum" class="imgdiv"><img src="yellow_pompom_mum.jpg" alt="mum" width="100"></div>
+        <div id="coneflower" class="imgdiv"><img src="coneflower.jpg" alt="coneflower" width="100"></div>
+    </div>
+</body>
+
+</html>
