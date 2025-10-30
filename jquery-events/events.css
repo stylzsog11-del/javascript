@@ -1,41 +1,17 @@
+/* jQuery Events Assignment CSS */
+body {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+  margin: 20px;
+  background-color: #f5f5f5;
+  line-height: 1.6;
+}
+
 #pltTitle {
   color: #07a;
-}
-
-.botanic {
-  color: darkgreen;
-  font-style: italic;
-}
-
-.col {
-  width: 20em;
-  padding: 1em;
-  float: left;
-}
-
-footer {
-  clear: both;
-  margin-top: 2em;
   text-align: center;
-}
-
-.pic {
-  border-bottom: thin dashed darkgreen;
-  cursor: pointer;
-}
-
-.imgdiv {
-  position: absolute;
-  display: none;
-  background-color: white;
-  padding: 5px;
-  border: 1px solid #ccc;
-}
-
-.imgdiv img {
-  width: 120px;
-  height: auto;
-  border-radius: 5px;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 /* Heading styles for mouseover/mouseout events */
@@ -45,23 +21,126 @@ h1, h2 {
   font-family: Arial, sans-serif;
   margin: 20px 0;
   transition: color 0.3s ease;
-}
-
-/* Body and general styling */
-body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  background-color: #f9f9f9;
-}
-
-/* Additional flower styling */
-.flower {
-  padding: 5px;
-  margin: 3px 0;
   cursor: pointer;
+}
+
+h1:hover, h2:hover {
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.col {
+  width: 45%;
+  padding: 1.5em;
+  float: left;
+  margin: 2%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.botanic {
+  color: #666;
+  font-style: italic;
+  font-size: 0.9em;
+  margin-left: 20px;
+  padding: 5px;
+  background-color: #f9f9f9;
+  border-left: 3px solid #07a;
   border-radius: 3px;
+  display: none; /* Initially hidden by jQuery */
+}
+
+/* Flower styling for click events */
+.flower {
+  padding: 8px;
+  margin: 5px 0;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
 .flower:hover {
-  background-color: #f0f8ff;
+  background-color: #e6f3ff;
+}
+
+/* Picture flowers for hover events */
+.pic {
+  border-bottom: 2px dashed #07a;
+  cursor: pointer;
+  color: #07a;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.pic:hover {
+  color: #ff6600;
+  border-bottom-color: #ff6600;
+}
+
+/* Image divs for hover display */
+.imgdiv {
+  position: absolute;
+  display: none;
+  background-color: white;
+  padding: 8px;
+  border: 3px solid #07a;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+.imgdiv img {
+  width: 200px;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Footer and layout */
+footer {
+  clear: both;
+  margin-top: 2em;
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Letter anchors for keypress navigation */
+h2[id] {
+  scroll-margin-top: 20px;
+}
+
+/* Instructions styling */
+#instructions {
+  background-color: #fffacd;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .col {
+    width: 100%;
+    float: none;
+    margin: 10px 0;
+  }
+  
+  #pltTitle {
+    font-size: 2em;
+  }
+  
+  .imgdiv img {
+    width: 150px;
+  }
 }
