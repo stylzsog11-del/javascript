@@ -1,6 +1,5 @@
 {
     "livePreview.defaultPreviewPath": "/index.html",
-    "liveServer.settings.root": ".",
     "editor.formatOnSave": true,
     "files.associations": {
         "*.html": "html",
