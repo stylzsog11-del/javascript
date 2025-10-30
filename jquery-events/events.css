@@ -1,0 +1,39 @@
+#pltTitle {
+  color: #07a;
+}
+
+.botanic {
+  color: darkgreen;
+  font-style: italic;
+}
+
+.col {
+  width: 20em;
+  padding: 1em;
+  float: left;
+}
+
+footer {
+  clear: both;
+  margin-top: 2em;
+  text-align: center;
+}
+
+.pic {
+  border-bottom: thin dashed darkgreen;
+  cursor: pointer;
+}
+
+.imgdiv {
+  position: absolute;
+  display: none;
+  background-color: white;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.imgdiv img {
+  width: 120px;
+  height: auto;
+  border-radius: 5px;
+}
