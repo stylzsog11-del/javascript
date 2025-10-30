@@ -6,7 +6,28 @@ An interactive flower glossary demonstrating various jQuery event handlers and D
 
 Open `jquery-events.html` in your browser to see the interactive demo in action!
 
-## ✨ Features
+## ✨ jQuery Events Requirements
+
+### Assignment Requirements Implemented:
+
+1. **✅ Mouseover and Mouseout Events on Headings**
+   - Hover over any heading (h1, h2) to see color change to orange
+   - Mouse out to reset color back to original
+
+2. **✅ Hide Botanical Names and Display Individual Ones on Click**
+   - All botanical names are hidden when page loads
+   - Click any flower name to reveal its botanical name
+   - Only one botanical name shows at a time
+
+3. **✅ Hover Events to Display Images for Select Flowers**
+   - Hover over underlined flowers (coneflower, mum, rose) to see images
+   - Images appear beside the flower name at cursor position + 150px
+   - Images hide when mouse moves off the flower
+
+4. **✅ Keypress Events for Letter Navigation**
+   - Type any letter (a-z) to jump to the first flower starting with that letter
+   - Includes visual highlighting of the target section
+   - Smooth scrolling for better user experience
 
 ### Interactive Events Implemented:
 - **Mouseover/Mouseout Events**: Hover over headings to see color changes

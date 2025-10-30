@@ -32,6 +32,20 @@
             font-family: 'Courier New', monospace;
             font-size: 14px;
         }
+        .github-info pre {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        .github-info h4 {
+            color: #2d3748;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-family: Arial, sans-serif;
+        }
     </style>
 </head>
 
@@ -40,18 +54,28 @@
         <div class="demo-header">
             <h1>jQuery Events Interactive Demo</h1>
             <p><strong>GitHub Repository:</strong> javascript/jquery-events</p>
-            <p><em>An interactive flower glossary demonstrating various jQuery event handlers</em></p>
+            <p><em>An interactive flower glossary demonstrating specific jQuery event handler requirements</em></p>
+            
+            <div style="background-color: #e8f5e8; padding: 15px; margin-top: 15px; border-radius: 8px; border-left: 4px solid #4CAF50;">
+                <h4 style="margin-top: 0; color: #2e7d32;">📋 Assignment Requirements Implemented:</h4>
+                <ul style="margin-bottom: 0; text-align: left;">
+                    <li>✅ <strong>Mouseover/Mouseout</strong> - Headings change color on hover</li>
+                    <li>✅ <strong>Hide/Show Botanical Names</strong> - Click flowers to reveal names</li>
+                    <li>✅ <strong>Image Hover Events</strong> - Images appear beside cursor for select flowers</li>
+                    <li>✅ <strong>Keypress Navigation</strong> - Type letters to jump to first matching flower</li>
+                </ul>
+            </div>
         </div>
 
         <div class="features-list">
-            <h3>🎯 Interactive Features Demonstrated:</h3>
-            <ul>
-                <li><strong>Mouseover/Mouseout Events:</strong> Hover over headings to see color changes</li>
-                <li><strong>Click Events:</strong> Click on flower names to reveal botanical names</li>
-                <li><strong>Hover Events with Images:</strong> Hover over underlined flowers to see images</li>
-                <li><strong>Keypress Events:</strong> Press any letter (a-z) to jump to that section</li>
-                <li><strong>Dynamic CSS:</strong> Real-time style changes and visual feedback</li>
-            </ul>
+            <h3>🎯 jQuery Events Requirements Implemented:</h3>
+            <ol>
+                <li><strong>Mouseover/Mouseout Events:</strong> Hover over headings (h1, h2) to see color changes to orange</li>
+                <li><strong>Hide Botanic Names & Click Events:</strong> Botanical names are hidden on load. Click flower names to reveal individual botanical names</li>
+                <li><strong>Hover Events with Images:</strong> Hover over underlined flowers (coneflower, mum, rose) to see images appear beside the cursor</li>
+                <li><strong>Keypress Events:</strong> Press any letter (a-z) to jump to the first flower starting with that letter</li>
+                <li><strong>Additional Features:</strong> Dynamic CSS changes, smooth scrolling, and visual feedback</li>
+            </ol>
         </div>
 
         <nav>
@@ -115,23 +139,62 @@
         </div>
 
         <div id="code-info" class="github-info">
-            <h3>💻 Technical Implementation:</h3>
-            <p><strong>Files in this project:</strong></p>
+            <h3>💻 Technical Implementation of Requirements:</h3>
+            
+            <h4>1. Mouseover/Mouseout Events on Headings:</h4>
+            <pre><code>// Change heading color to orange on mouseover
+$('h1, h2').mouseover(function() {
+    $(this).css('color', '#ff6600');
+});
+
+// Reset heading color on mouseout
+$('h1, h2').mouseout(function() {
+    $(this).css('color', '');
+});</code></pre>
+
+            <h4>2. Hide Botanical Names & Show on Click:</h4>
+            <pre><code>// Hide all botanical names on page load
+$('.botanic').hide();
+
+// Show botanical name when flower is clicked
+$('.flower').click(function() {
+    $('.botanic').hide(); // Hide all first
+    $(this).children('.botanic').show(); // Show clicked one
+});</code></pre>
+
+            <h4>3. Hover Events to Display Images:</h4>
+            <pre><code>// Show images beside cursor on hover
+$('.pic').hover(
+    function(evt) {
+        var imageId = '#' + $(this).attr('title');
+        var xPos = evt.pageX + 150;
+        var yPos = evt.pageY;
+        $(imageId).css({
+            'top': yPos + 'px',
+            'left': xPos + 'px'
+        }).show();
+    },
+    function() {
+        var imageId = '#' + $(this).attr('title');
+        $(imageId).hide();
+    }
+);</code></pre>
+
+            <h4>4. Keypress Events for Navigation:</h4>
+            <pre><code>// Jump to first flower by letter
+$(document).keypress(function(evt) {
+    var keyPressed = String.fromCharCode(evt.which).toLowerCase();
+    if (keyPressed >= 'a' && keyPressed <= 'z') {
+        window.location = "#" + keyPressed;
+    }
+});</code></pre>
+
+            <p><strong>Project Files:</strong></p>
             <ul>
                 <li><code>jquery-events.html</code> - Main demo page (this file)</li>
-                <li><code>glossary.html</code> - Original full glossary</li>
-                <li><code>glossary.js</code> - jQuery event handlers</li>
-                <li><code>glossary.css</code> - Styling and layout</li>
-                <li><code>script.js</code> - Additional JavaScript functionality</li>
-                <li><code>*.jpg, *.png</code> - Image assets</li>
-            </ul>
-            <p><strong>jQuery Events Implemented:</strong></p>
-            <ul>
-                <li><code>mouseover/mouseout</code> - Heading color changes</li>
-                <li><code>click</code> - Show/hide botanical names</li>
-                <li><code>hover</code> - Image display on hover</li>
-                <li><code>keypress</code> - Keyboard navigation</li>
-                <li><code>$(document).ready()</code> - DOM initialization</li>
+                <li><code>glossary.js</code> - Complete jQuery event handlers implementation</li>
+                <li><code>glossary.css</code> - Styling and positioning for images</li>
+                <li><code>*.jpg</code> - Image assets for hover effects</li>
             </ul>
         </div>
 
