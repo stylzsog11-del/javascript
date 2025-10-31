@@ -18,12 +18,13 @@ footer {
     clear: both;
 }
 
-/* Required for hover image functionality */
+/* ✅ REQUIRED: Dashed border for hoverable flowers */
 .pic {
     border-bottom: thin dashed darkgreen;
     cursor: pointer;
 }
 
+/* ✅ REQUIRED: Absolute positioning for image divs */
 .imgdiv {
     position: absolute;
     z-index: 1000;
@@ -49,14 +50,4 @@ footer {
 
 h1, h2 {
     transition: color 0.3s ease;
-}
-
-/* Instructions styling */
-#instructions {
-    background-color: #fffacd;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    font-size: 14px;
-    border: 1px solid #ddd;
 }
