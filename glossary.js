@@ -32,37 +32,29 @@ $(document).ready(function() {
         console.log('Clicked on flower: ' + flowerName);
     });
     
-    // ✅ REQUIREMENT 3: HOVER EVENT for images
-    // Hover event for flowers with images (.pic class)
-    $('.pic').hover(
-        // Mouseover function
-        function(evt) {
-            // Get the title attribute to identify which image to show
-            var imageId = '#' + $(this).attr('title');
-            
-            // Get cursor coordinates and adjust position
-            var xPos = evt.pageX + 150; // Add 150 to move right
-            var yPos = evt.pageY;
-            
-            // Position and show the image
-            $(imageId).css({
-                'top': yPos + 'px',
-                'left': xPos + 'px'
-            }).show();
-            
-            console.log('Hover on: ' + $(this).attr('title') + ' at (' + xPos + ', ' + yPos + ')');
-        },
-        // Mouseout function
-        function() {
-            // Get the title attribute to identify which image to hide
-            var imageId = '#' + $(this).attr('title');
-            
-            // Hide the image
-            $(imageId).hide();
-            
-            console.log('Hover off: ' + $(this).attr('title'));
-        }
-    );
+    // In your glossary.js, add debugging to check file paths
+$('.pic').hover(
+    function(evt) {
+        var imageId = '#' + $(this).attr('title');
+        var xPos = evt.pageX + 150;
+        var yPos = evt.pageY;
+        
+        // 🔍 DEBUG: Check if the image element exists
+        console.log('Looking for image with ID:', imageId);
+        console.log('Image element found:', $(imageId).length);
+        console.log('Image src:', $(imageId).find('img').attr('src'));
+        
+        $(imageId).css({
+            'top': yPos + 'px',
+            'left': xPos + 'px'
+        }).show();
+    },
+    function() {
+        var imageId = '#' + $(this).attr('title');
+        $(imageId).hide();
+        console.log('Hiding image:', imageId);
+    }
+);
     
     // ✅ REQUIREMENT 4: KEYPRESS EVENT for navigation
     // Keypress event to jump to letters
