@@ -4,6 +4,7 @@ $(document).ready(function() {
     // ✅ REQUIREMENT: Hide botanic names and image divs when page loads
     $('.botanic').hide();
     $('.imgdiv').hide();
+    console.log('Hidden elements:', $('.botanic').length, 'botanic spans and', $('.imgdiv').length, 'image divs');
     
     // ✅ REQUIREMENT 1: MOUSEOVER AND MOUSEOUT EVENTS
     $('h1, h2').mouseover(function() {
@@ -23,48 +24,90 @@ $(document).ready(function() {
         console.log('Clicked flower:', $(this).text().split(':')[0]);
     });
     
-    // ✅ REQUIREMENT 3: HOVER EVENT FOR IMAGES
+    // ✅ REQUIREMENT 3: HOVER EVENT FOR IMAGES (ENHANCED WITH DEBUGGING)
+    console.log('Found .pic elements:', $('.pic').length);
+    
     $('.pic').hover(
         // First function (mouseover)
         function(evt) {
+            console.log('--- HOVER START ---');
+            
             // Get the title attribute and create the ID
-            var imageId = '#' + $(this).attr('title');
+            var title = $(this).attr('title');
+            var imageId = '#' + title;
             
-            // Get X and Y coordinates, add 150 to X
-            var xPos = evt.pageX + 150;
-            var yPos = evt.pageY;
+            console.log('Flower name:', $(this).text());
+            console.log('Title attribute:', title);
+            console.log('Looking for element:', imageId);
             
-            // Set CSS position and show the image
-            $(imageId).css({
-                'top': yPos + 'px',
-                'left': xPos + 'px'
-            }).show();
+            // Check if the image element exists
+            var imageElement = $(imageId);
+            console.log('Image element found:', imageElement.length > 0);
             
-            console.log('Showing image:', imageId, 'at', xPos, yPos);
+            if (imageElement.length > 0) {
+                // Get X and Y coordinates, add 150 to X
+                var xPos = evt.pageX + 150;
+                var yPos = evt.pageY;
+                
+                console.log('Mouse position:', evt.pageX, evt.pageY);
+                console.log('Image position will be:', xPos, yPos);
+                
+                // Set CSS position and show the image
+                imageElement.css({
+                    'top': yPos + 'px',
+                    'left': xPos + 'px',
+                    'display': 'block'
+                });
+                
+                console.log('Image should now be visible');
+                console.log('Image CSS:', imageElement.attr('style'));
+            } else {
+                console.error('❌ Image element not found:', imageId);
+            }
         },
         // Second function (mouseout)
         function() {
+            console.log('--- HOVER END ---');
+            
             // Get the title attribute to create the ID
-            var imageId = '#' + $(this).attr('title');
+            var title = $(this).attr('title');
+            var imageId = '#' + title;
+            
+            console.log('Hiding image:', imageId);
             
             // Hide the image div
             $(imageId).hide();
-            
-            console.log('Hiding image:', imageId);
         }
     );
     
     // ✅ REQUIREMENT 4: KEYPRESS EVENT
     $(document).keypress(function(evt) {
-        // Get the key and convert to lowercase
         var keyPressed = String.fromCharCode(evt.which).toLowerCase();
         
-        // Check if it's a letter
         if (keyPressed >= 'a' && keyPressed <= 'z') {
-            // Jump to that location
             window.location = "#" + keyPressed;
             console.log('Jumping to section:', keyPressed);
         }
+    });
+    
+    // 🔍 ADDITIONAL DEBUGGING - Check if images exist
+    console.log('=== IMAGE FILE CHECK ===');
+    $('#rose img').on('load', function() {
+        console.log('✅ rose.jpg loaded successfully');
+    }).on('error', function() {
+        console.error('❌ rose.jpg failed to load');
+    });
+    
+    $('#mum img').on('load', function() {
+        console.log('✅ yellow_pompom_mum.jpg loaded successfully');
+    }).on('error', function() {
+        console.error('❌ yellow_pompom_mum.jpg failed to load');
+    });
+    
+    $('#coneflower img').on('load', function() {
+        console.log('✅ coneflower.jpg loaded successfully');
+    }).on('error', function() {
+        console.error('❌ coneflower.jpg failed to load');
     });
     
     console.log('✅ All jQuery events initialized successfully!');
