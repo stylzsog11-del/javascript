@@ -5,9 +5,16 @@
 https://github.com/stylzsog11-del/javascript
 ```
 
-## 🌐 **GitHub Pages Link:**
+## 🌐 **GitHub Pages Links (Multiple Options):**
+
+### **Option 1 - Direct jQuery Effects Page:**
 ```
 https://stylzsog11-del.github.io/javascript/jquery-effects/jquery-effects.html
+```
+
+### **Option 2 - Main Portfolio Page (Recommended):**
+```
+https://stylzsog11-del.github.io/javascript/
 ```
 
 ---
@@ -18,9 +25,15 @@ https://stylzsog11-del.github.io/javascript/jquery-effects/jquery-effects.html
 - Copy this link: `https://github.com/stylzsog11-del/javascript`
 - Paste it in the "GitHub Repo Link" field in your eCampus assignment
 
-### 2. **GitHub Pages Submission:**
+### 2. **GitHub Pages Submission (Choose One):**
+
+**Option A - Direct Link:**
 - Copy this link: `https://stylzsog11-del.github.io/javascript/jquery-effects/jquery-effects.html`
 - Paste it in the "GitHub Pages Link" field in your eCampus assignment
+
+**Option B - Portfolio Page (Recommended):**
+- Copy this link: `https://stylzsog11-del.github.io/javascript/`  
+- This shows a professional portfolio page with a link to your jQuery effects demo
 
 ---
 
