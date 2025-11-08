@@ -88,3 +88,68 @@ input[type='submit'] {
 	background-color: #afeeee;
 	text-align: center;
 }
+
+/* Rose Animation Styles */
+#rose {
+	position: absolute;
+	right: -100px;
+	top: 20px;
+	opacity: 0;
+}
+
+#container {
+	position: relative;
+}
+
+/* Newsletter Signup Styles */
+#newsletter {
+	margin: 2em 0;
+	padding: 1em;
+	border: 2px solid darkgreen;
+	border-radius: 10px;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+#newsletter p {
+	margin: 0;
+	font-weight: bold;
+}
+
+#signuplink {
+	text-decoration: none;
+	color: darkgreen;
+	font-size: 1.1em;
+}
+
+#signuplink:hover {
+	color: #228B22;
+}
+
+#newsSignup {
+	margin-top: 1em;
+	padding: 1em;
+	background-color: cornsilk;
+	border-radius: 5px;
+}
+
+#newsSignup label {
+	display: block;
+	margin-bottom: 0.5em;
+	text-align: left;
+	width: auto;
+	padding-right: 0;
+}
+
+#newsSignup input[type="text"], #newsSignup input[type="email"] {
+	padding: 0.5em;
+	border: 1px solid darkgreen;
+	border-radius: 3px;
+	margin-left: 0.5em;
+	width: 200px;
+}
+
+#openclose {
+	font-weight: bold;
+	font-size: 1.2em;
+	color: darkgreen;
+}
