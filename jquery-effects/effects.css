@@ -1,123 +1,90 @@
-/* Existing styles... */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f5f5f5;
+	background: url(springbg.jpg);
+	background-size: 100%;
+	background-repeat: repeat-y;
 }
-
-/* ✅ REQUIRED: Container positioning for rose animation */
-#container {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-/* ✅ REQUIRED: Rose positioning and initial state */
-#rose {
-    position: absolute;
-    right: -100px;
-    top: 20px;
-    opacity: 0;
-    width: 100px;
-    height: auto;
-}
-
-/* Newsletter section styling */
-#newsletter {
-    background-color: #f9f9f9;
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-}
-
-#signuplink {
-    color: #07a;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-#signuplink:hover {
-    text-decoration: underline;
-}
-
-#openclose {
-    font-weight: bold;
-    margin-right: 5px;
-}
-
-#newsSignup {
-    margin-top: 15px;
-    padding: 15px;
-    background-color: white;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-#newsSignup label {
-    display: block;
-    margin: 10px 0;
-    font-weight: bold;
-}
-
-#newsSignup input[type="text"], 
-#newsSignup input[type="email"] {
-    width: 200px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    margin-left: 10px;
-}
-
-#newsSignup input[type="submit"] {
-    background-color: #07a;
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-#newsSignup input[type="submit"]:hover {
-    background-color: #056;
-}
-
-/* Slogan styling for better transitions */
-#slogan {
-    text-align: center;
-    color: #07a;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-/* Other styling */
 #specials {
-    float: right;
-    width: 200px;
-    padding: 15px;
-    background-color: #e8f4f8;
-    border-radius: 8px;
-    margin: 0 0 20px 20px;
+	width: 10em;
+	float: right;
+	padding: .5em 1em;
+	border: medium #006400 groove;
+	border-radius: 10px;
+	margin-left: 1em;
 }
-
-footer {
-    clear: both;
-    text-align: center;
-    margin-top: 30px;
-    padding-top: 20px;
+#container {
+	width: 50em;
+	margin: 1em auto;
+	border: outset thick darkgreen;
+	background-color: rgba(255,255,255,.9);
+	padding: 1em;
+	font-family: Arial, Helvetica, sans-serif;
 }
-
-h1 {
-    text-align: center;
-    color: #07a;
+.error {
+	color: red;
 }
-
-h2, h3 {
-    color: #056;
+a:link {
+	color: darkgreen;
+}
+a:visited {
+	color: darkgreen;
+}
+legend {
+	font-family: "Comic Sans MS";
+	color: darkgreen;
+}
+h1, h2, h3 {
+	color: darkgreen;
+	text-align: center;
+	line-height: .7em;
+	font-family: "Comic Sans MS";
+}
+label {
+	display: inline-block;
+	width: 20em;
+	text-align: right;
+	line-height: 1.5em;
+	padding-right: 1em;
+}
+th[colspan] {
+	text-align: right;
+}
+table {
+	border: thin solid darkgreen;
+	background-color: cornsilk;
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+td, th {
+	padding: .25em 1em;
+	border: thin green dotted;}
+td[id] {
+	text-align: right;
+}
+input[type='submit'] {
+	background-color: cornsilk;
+	font-size: .8em;
+	border-radius: 5px;
+	border: thin outset darkgreen;
+}
+#place {
+	text-align: center;
+}
+#main {clear: left;}
+.Fall {
+	background-image: url(fall.png);
+	background-size: 100% 100%;
+	background-color: cornsilk;
+	text-align: center;
+}
+.Winter {
+	background-color: lightblue;
+	text-align: center;
+}
+.Summer {
+	background-color: #ff9;
+	text-align: center;
+}
+.Spring {
+	background-color: #afeeee;
+	text-align: center;
 }
