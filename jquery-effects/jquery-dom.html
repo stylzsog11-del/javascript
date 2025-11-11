@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Patti's Bed of Blooms - Pansy Products</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <link href="jquery-dom.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="jquery-dom.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <h1>Patti's Bed of Blooms</h1>
+            <p id="slogan">Beautiful Pansies for Your Garden</p>
+        </header>
+        
+        <nav>
+            <p><a href="index.html">Home</a> | <a href="orderform.html">Place an Order</a> | <a href="mums.html">Mums</a> | <a href="pansy.html">Pansies</a> | <a href="glossary.html">Plant Glossary</a></p>
+        </nav>
+
+        <div id="main-content">
+            <div id="products-section">
+                <h2>Our Beautiful Pansies</h2>
+                
+                <!-- Product 1: Purple Pansy -->
+                <div class="product">
+                    <img src="purple-pansy.jpg" alt="Purple Pansy" class="product-image">
+                    <h3>Purple Pansy</h3>
+                    <p>Beautiful deep purple pansies perfect for spring gardens.</p>
+                    <p class="price">$12.99</p>
+                    
+                    <!-- Star Rating System -->
+                    <div class="rating-container">
+                        <span class="rating-label">Rate this product:</span>
+                        <span class="rating" data-product="purple-pansy">
+                            <img src="staroff.gif" alt="Star 1" class="star" data-rating="1">
+                            <img src="staroff.gif" alt="Star 2" class="star" data-rating="2">
+                            <img src="staroff.gif" alt="Star 3" class="star" data-rating="3">
+                            <img src="staroff.gif" alt="Star 4" class="star" data-rating="4">
+                            <img src="staroff.gif" alt="Star 5" class="star" data-rating="5">
+                        </span>
+                    </div>
+                    
+                    <button class="add" name="Purple Pansy" id="purple-pansy">Add to Cart</button>
+                </div>
+
+                <!-- Product 2: Yellow Pansy -->
+                <div class="product">
+                    <img src="yellow-pansy.jpg" alt="Yellow Pansy" class="product-image">
+                    <h3>Yellow Pansy</h3>
+                    <p>Bright sunny yellow pansies to brighten up any garden space.</p>
+                    <p class="price">$11.99</p>
+                    
+                    <!-- Star Rating System -->
+                    <div class="rating-container">
+                        <span class="rating-label">Rate this product:</span>
+                        <span class="rating" data-product="yellow-pansy">
+                            <img src="staroff.gif" alt="Star 1" class="star" data-rating="1">
+                            <img src="staroff.gif" alt="Star 2" class="star" data-rating="2">
+                            <img src="staroff.gif" alt="Star 3" class="star" data-rating="3">
+                            <img src="staroff.gif" alt="Star 4" class="star" data-rating="4">
+                            <img src="staroff.gif" alt="Star 5" class="star" data-rating="5">
+                        </span>
+                    </div>
+                    
+                    <button class="add" name="Yellow Pansy" id="yellow-pansy">Add to Cart</button>
+                </div>
+
+                <!-- Product 3: Mixed Pansy -->
+                <div class="product">
+                    <img src="mixed-pansy.jpg" alt="Mixed Pansy" class="product-image">
+                    <h3>Mixed Pansy Pack</h3>
+                    <p>Variety pack of colorful pansies in purple, yellow, and white.</p>
+                    <p class="price">$15.99</p>
+                    
+                    <!-- Star Rating System -->
+                    <div class="rating-container">
+                        <span class="rating-label">Rate this product:</span>
+                        <span class="rating" data-product="mixed-pansy">
+                            <img src="staroff.gif" alt="Star 1" class="star" data-rating="1">
+                            <img src="staroff.gif" alt="Star 2" class="star" data-rating="2">
+                            <img src="staroff.gif" alt="Star 3" class="star" data-rating="3">
+                            <img src="staroff.gif" alt="Star 4" class="star" data-rating="4">
+                            <img src="staroff.gif" alt="Star 5" class="star" data-rating="5">
+                        </span>
+                    </div>
+                    
+                    <button class="add" name="Mixed Pansy Pack" id="mixed-pansy">Add to Cart</button>
+                </div>
+
+                <!-- Product 4: White Pansy -->
+                <div class="product">
+                    <img src="white-pansy.jpg" alt="White Pansy" class="product-image">
+                    <h3>White Pansy</h3>
+                    <p>Elegant white pansies perfect for formal garden arrangements.</p>
+                    <p class="price">$13.99</p>
+                    
+                    <!-- Star Rating System -->
+                    <div class="rating-container">
+                        <span class="rating-label">Rate this product:</span>
+                        <span class="rating" data-product="white-pansy">
+                            <img src="staroff.gif" alt="Star 1" class="star" data-rating="1">
+                            <img src="staroff.gif" alt="Star 2" class="star" data-rating="2">
+                            <img src="staroff.gif" alt="Star 3" class="star" data-rating="3">
+                            <img src="staroff.gif" alt="Star 4" class="star" data-rating="4">
+                            <img src="staroff.gif" alt="Star 5" class="star" data-rating="5">
+                        </span>
+                    </div>
+                    
+                    <button class="add" name="White Pansy" id="white-pansy">Add to Cart</button>
+                </div>
+
+                <!-- Product 5: Giant Pansy -->
+                <div class="product">
+                    <img src="giant-pansy.jpg" alt="Giant Pansy" class="product-image">
+                    <h3>Giant Pansy</h3>
+                    <p>Extra large pansies with vibrant colors and strong stems.</p>
+                    <p class="price">$18.99</p>
+                    
+                    <!-- Star Rating System -->
+                    <div class="rating-container">
+                        <span class="rating-label">Rate this product:</span>
+                        <span class="rating" data-product="giant-pansy">
+                            <img src="staroff.gif" alt="Star 1" class="star" data-rating="1">
+                            <img src="staroff.gif" alt="Star 2" class="star" data-rating="2">
+                            <img src="staroff.gif" alt="Star 3" class="star" data-rating="3">
+                            <img src="staroff.gif" alt="Star 4" class="star" data-rating="4">
+                            <img src="staroff.gif" alt="Star 5" class="star" data-rating="5">
+                        </span>
+                    </div>
+                    
+                    <button class="add" name="Giant Pansy" id="giant-pansy">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Shopping Cart Section -->
+            <div id="cart-section">
+                <h2>Shopping Cart</h2>
+                <div id="cart-container">
+                    <ul id="cart">
+                        <li id="empty">Your cart is empty</li>
+                    </ul>
+                    <div id="cart-total">
+                        <p>Items in cart: <span id="item-count">0</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <hr>
+            <p>El Centro College WebDev - jQuery DOM Manipulation</p>
+        </footer>
+    </div>
+</body>
+</html>
