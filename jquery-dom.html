@@ -112,27 +112,27 @@
                 </figure>
                 <figure>
                     <figcaption>Ruffled Pansy Mix</figcaption>
-                    <img src="pansy4.jpg" class="flower" alt="Ruffled pansy mix">
+                    <img src="jquery-dom/pansy4.jpg" class="flower" alt="Ruffled pansy mix">
                     <div class="price" style="display: none; color: green; font-weight: bold;">$18.99</div>
                     <span class="rating">
-                        <img src="staroff.gif" class="star" data-rating="1">
-                        <img src="staroff.gif" class="star" data-rating="2">
-                        <img src="staroff.gif" class="star" data-rating="3">
-                        <img src="staroff.gif" class="star" data-rating="4">
-                        <img src="staroff.gif" class="star" data-rating="5">
+                        <img src="jquery-dom/staroff.gif" class="star" data-rating="1">
+                        <img src="jquery-dom/staroff.gif" class="star" data-rating="2">
+                        <img src="jquery-dom/staroff.gif" class="star" data-rating="3">
+                        <img src="jquery-dom/staroff.gif" class="star" data-rating="4">
+                        <img src="jquery-dom/staroff.gif" class="star" data-rating="5">
                     </span><br>
                     <p class="add" id="pansy4" data-name="Ruffled Pansy Mix" data-price="18.99">Add to Cart</p>
                 </figure>
                 <figure>
                     <figcaption>Pastel Pansy Mix</figcaption>
-                    <img src="pansy5.jpg" class="flower" alt="Pastel pansy mix">
+                    <img src="jquery-dom/pansy5.jpg" class="flower" alt="Pastel pansy mix">
                     <div class="price" style="display: none; color: green; font-weight: bold;">$16.99</div>
                     <span class="rating">
-                        <img src="staroff.gif" class="star" data-rating="1">
-                        <img src="staroff.gif" class="star" data-rating="2">
-                        <img src="staroff.gif" class="star" data-rating="3">
-                        <img src="staroff.gif" class="star" data-rating="4">
-                        <img src="staroff.gif" class="star" data-rating="5">
+                        <img src="jquery-dom/staroff.gif" class="star" data-rating="1">
+                        <img src="jquery-dom/staroff.gif" class="star" data-rating="2">
+                        <img src="jquery-dom/staroff.gif" class="star" data-rating="3">
+                        <img src="jquery-dom/staroff.gif" class="star" data-rating="4">
+                        <img src="jquery-dom/staroff.gif" class="star" data-rating="5">
                     </span><br>
                     <span class="add" id="pansy5" data-name="Pastel Pansy Mix" data-price="16.99">Add to Cart</span>
                 </figure>
@@ -174,9 +174,9 @@
                     const rating = $(this).data('rating');
                     $(this).parent().find('.star').each(function(index) {
                         if (index < rating) {
-                            $(this).attr('src', 'staron.gif');
+                            $(this).attr('src', 'jquery-dom/staron.gif');
                         } else {
-                            $(this).attr('src', 'staroff.gif');
+                            $(this).attr('src', 'jquery-dom/staroff.gif');
                         }
                     });
                 },
