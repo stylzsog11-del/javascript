@@ -1,15 +1,14 @@
 $(document).ready(function() {
     // ===== REQUIREMENT: Preload images =====
     function preloadImages() {
-        // For now, using SVG data URLs which don't need preloading
-        // When you replace with actual images, add the real URLs here
+        // Preload all mum images for better gallery performance
         const imageUrls = [
-            // 'yellow_pompom_mum.jpg',
-            // 'purple_single_mum.jpg', 
-            // 'white_double_mum.jpg',
-            // 'pink_single_mum.jpg',
-            // 'sunburst_daisy_mum.jpg',
-            // 'magenta_daisy_mum.jpg'
+            'yellow_pompom_mum.jpg',
+            'purple_single_mum.jpg', 
+            'white_double_mum.jpg',
+            'pink_single_mum.jpg',
+            'sunburst_daisy_mum.jpg',
+            'magenta_daisy_mum.jpg'
         ];
         
         imageUrls.forEach(function(url) {
