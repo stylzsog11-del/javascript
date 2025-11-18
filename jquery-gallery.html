@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Photo Gallery - EL Centro College</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c5530;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .gallery {
+            margin-top: 40px;
+        }
+        
+        .main-image-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .main-image {
+            max-width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border: 3px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .main-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .image-caption {
+            margin-top: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c5530;
+        }
+        
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+        
+        .thumbnail {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .thumbnail:hover {
+            border: 2px solid #2c5530;
+            box-shadow: 0 4px 15px rgba(44, 85, 48, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .instructions {
+            background-color: #e6ffe6;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #2c5530;
+        }
+        
+        .instructions h3 {
+            color: #2c5530;
+            margin-top: 0;
+        }
+        
+        .instructions ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin: 8px 0;
+            color: #333;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+        }
+        
+        footer a {
+            color: #2c5530;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>jQuery Photo Gallery</h1>
+        <p class="subtitle">Interactive Image Gallery with Hover Effects and Click Events</p>
+        
+        <div class="instructions">
+            <h3>🎯 Gallery Features:</h3>
+            <ul>
+                <li><strong>Hover Effects:</strong> Move your mouse over thumbnail images to see border and shadow effects</li>
+                <li><strong>Click Thumbnails:</strong> Click any small image to display it as the main photo</li>
+                <li><strong>Open in New Window:</strong> Click the large image to open it in a new window</li>
+                <li><strong>Dynamic Captions:</strong> Image descriptions update automatically</li>
+            </ul>
+        </div>
+        
+        <div class="gallery">
+            <div class="main-image-section">
+                <img id="mainImage" class="main-image" 
+                     src="jquery-dom/pansy1.jpg" 
+                     alt="Beautiful Rose Pansies displaying vibrant colors in the garden">
+                <div id="imageCaption" class="image-caption">
+                    Beautiful Rose Pansies displaying vibrant colors in the garden
+                </div>
+            </div>
+            
+            <div class="thumbnails">
+                <img class="thumbnail" 
+                     src="jquery-dom/pansy1.jpg" 
+                     alt="Beautiful Rose Pansies displaying vibrant colors in the garden"
+                     title="Rose Pansies">
+                     
+                <img class="thumbnail" 
+                     src="jquery-dom/pansy2.jpg" 
+                     alt="Colorful Multicolored Pansy with striking pattern variations"
+                     title="Multicolored Pansy">
+                     
+                <img class="thumbnail" 
+                     src="jquery-dom/pansy3.jpg" 
+                     alt="Dark Face Pansy featuring deep purple and black markings"
+                     title="Dark Face Pansy">
+                     
+                <img class="thumbnail" 
+                     src="jquery-dom/pansy4.jpg" 
+                     alt="Elegant Ruffled Pansy Mix with delicate petal textures"
+                     title="Ruffled Pansy Mix">
+                     
+                <img class="thumbnail" 
+                     src="jquery-dom/pansy5.jpg" 
+                     alt="Soft Pastel Pansy Mix in gentle spring colors"
+                     title="Pastel Pansy Mix">
+            </div>
+        </div>
+        
+        <footer>
+            <p>EL Centro College - Web Development Course</p>
+            <p><a href="https://github.com/stylzsog11-del/javascript" target="_blank">View on GitHub</a></p>
+        </footer>
+    </div>
+    
+    <script src="gallery.js"></script>
+</body>
+</html>
