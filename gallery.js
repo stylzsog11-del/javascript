@@ -53,12 +53,35 @@ $(document).ready(function() {
     });
     
     // Add click event to main image to open in new window
-    $('#mainImage').click(function() {
+    $('#mainImage').click(function(e) {
+        e.preventDefault(); // Prevent any default behavior
+        
         var imageSrc = $(this).attr('src');
         var imageAlt = $(this).attr('alt');
         
+        console.log('Opening image in new window:', imageSrc); // Debug log
+        
+        // Add immediate visual feedback
+        $(this).css({
+            'transform': 'scale(0.95)',
+            'opacity': '0.8'
+        });
+        
+        setTimeout(() => {
+            $(this).css({
+                'transform': 'scale(1)',
+                'opacity': '1'
+            });
+        }, 150);
+        
         // Open image in new window with specific dimensions
-        var newWindow = window.open('', '_blank', 'width=800,height=600,scrollbars=yes,resizable=yes');
+        var newWindow = window.open('', '_blank', 'width=900,height=700,scrollbars=yes,resizable=yes,menubar=no,toolbar=no');
+        
+        // Check if popup was blocked
+        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+            alert('Popup blocked! Please allow popups for this site and try again.');
+            return;
+        }
         
         // Create HTML content for the new window
         var windowContent = `
@@ -70,45 +93,94 @@ $(document).ready(function() {
                     body { 
                         margin: 0; 
                         padding: 20px; 
-                        background-color: #f0f0f0;
+                        background: linear-gradient(135deg, #f0f0f0 0%, #e6e6e6 100%);
                         font-family: Arial, sans-serif;
                         text-align: center;
+                        min-height: 100vh;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
                     }
                     img { 
-                        max-width: 100%; 
-                        max-height: 80vh;
-                        border: 3px solid #2c5530;
-                        border-radius: 10px;
-                        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+                        max-width: 90%; 
+                        max-height: 70vh;
+                        border: 4px solid #2c5530;
+                        border-radius: 15px;
+                        box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+                        transition: transform 0.3s ease;
+                    }
+                    img:hover {
+                        transform: scale(1.02);
                     }
                     .caption {
-                        margin-top: 15px;
-                        font-size: 1.1em;
+                        margin-top: 20px;
+                        font-size: 1.3em;
                         color: #2c5530;
                         font-weight: bold;
+                        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                        max-width: 80%;
                     }
                     .close-btn {
                         position: fixed;
-                        top: 10px;
-                        right: 10px;
+                        top: 15px;
+                        right: 15px;
                         background: #2c5530;
                         color: white;
                         border: none;
-                        padding: 10px 15px;
-                        border-radius: 5px;
+                        padding: 12px 18px;
+                        border-radius: 8px;
                         cursor: pointer;
-                        font-size: 14px;
+                        font-size: 16px;
+                        font-weight: bold;
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+                        transition: all 0.3s ease;
+                        z-index: 1000;
                     }
                     .close-btn:hover {
                         background: #1a3320;
+                        transform: translateY(-2px);
+                        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+                    }
+                    .title {
+                        color: #2c5530;
+                        font-size: 1.8em;
+                        margin-bottom: 20px;
+                        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                    }
+                    .loading {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        font-size: 1.2em;
+                        color: #666;
                     }
                 </style>
+                <script>
+                    // Add keyboard support
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape') {
+                            window.close();
+                        }
+                    });
+                    
+                    // Show loading message while image loads
+                    window.onload = function() {
+                        document.getElementById('loading').style.display = 'none';
+                        document.getElementById('content').style.display = 'flex';
+                    };
+                </script>
             </head>
             <body>
-                <button class="close-btn" onclick="window.close()">✕ Close</button>
-                <h2>Large View</h2>
-                <img src="${imageSrc}" alt="${imageAlt}">
-                <div class="caption">${imageAlt}</div>
+                <div id="loading" class="loading">Loading image...</div>
+                <div id="content" style="display: none; flex-direction: column; align-items: center;">
+                    <button class="close-btn" onclick="window.close()" title="Close (ESC)">✕ Close</button>
+                    <h1 class="title">Large View</h1>
+                    <img src="${imageSrc}" alt="${imageAlt}" onload="this.style.opacity='1'" style="opacity:0; transition: opacity 0.5s;">
+                    <div class="caption">${imageAlt}</div>
+                    <p style="margin-top: 15px; color: #888; font-size: 0.9em;">Press ESC to close</p>
+                </div>
             </body>
             </html>
         `;
@@ -119,13 +191,6 @@ $(document).ready(function() {
         
         // Focus the new window
         newWindow.focus();
-        
-        // Add visual feedback to main image
-        $(this).animate({
-            'transform': 'scale(0.95)'
-        }, 100).animate({
-            'transform': 'scale(1)'
-        }, 100);
     });
     
     // Add keyboard navigation (bonus feature)
