@@ -16,11 +16,23 @@
             <h1>Patti's Posies</h1>
         </header>
         <h2 id="pltTitle">Mums Photo Gallery</h2>
+        
+        <!-- Navigation Links Section - Demonstrates "Select a link with JavaScript" and "Prevent a page from following a link" -->
+        <div id="navigation">
+            <p><strong>Gallery Navigation:</strong></p>
+            <a href="gallery1.html" id="gallery1Link" class="nav-link">Gallery 1</a> |
+            <a href="gallery2.html" id="gallery2Link" class="nav-link">Gallery 2</a> |
+            <a href="gallery3.html" id="gallery3Link" class="nav-link">Gallery 3</a> |
+            <a href="https://example.com" id="externalLink" class="external-link" target="_blank">External Gallery</a>
+        </div>
+
         <div id="gallery">
             <figure>
                 <img src='jquery-gallery/yellow_pompom_mum.jpg' id="lgPic" alt="Yellow PomPom Mum">   
                 <figcaption id="lgTitle">Yellow PomPom Mum</figcaption>
             </figure>
+            
+            <!-- Thumbnail images - Demonstrates "Create rollover images" -->
             <p id="thumbs">
                 <img src="jquery-gallery/yellow_pompom_mum.jpg" alt="Yellow PomPom Mum" width="90" height="60">
                 <img src="jquery-gallery/purple_single_mum.jpg" alt="Purple Single Mum" width="90" height="60">
@@ -30,16 +42,44 @@
                 <img src="jquery-gallery/magenta_daisy_mum.jpg" alt="Magenta Daisy Mum" width="90" height="60">
             </p>
         </div>
+
+        <!-- Page within a page section - Demonstrates "Open a page within a page" -->
+        <div id="iframe-section">
+            <h3>Page Within a Page Demo</h3>
+            <p>Click the button below to load content within this page:</p>
+            <button id="loadPageBtn">Load Page Content</button>
+            <div id="page-content" style="display: none;">
+                <iframe id="contentFrame" width="100%" height="300" style="border: 2px solid #8fbc8f; border-radius: 8px;"></iframe>
+            </div>
+        </div>
+
+        <!-- Requirements checklist -->
+        <div id="requirements-demo">
+            <h3>Requirements Demonstrated:</h3>
+            <ul>
+                <li>✅ <strong>Create rollover images:</strong> Hover over thumbnail images to see border effects</li>
+                <li>✅ <strong>Preload images:</strong> All images are preloaded for faster switching</li>
+                <li>✅ <strong>Create a photo gallery using jQuery:</strong> Full gallery functionality implemented</li>
+                <li>✅ <strong>Select a link with JavaScript:</strong> Navigation links are selected and handled with jQuery</li>
+                <li>✅ <strong>Prevent a page from following a link:</strong> Navigation links prevented from default behavior</li>
+                <li>✅ <strong>Open a link in another window:</strong> External link opens in new window, large image opens in popup</li>
+                <li>✅ <strong>Open a page within a page:</strong> Iframe content loaded dynamically</li>
+            </ul>
+        </div>
+
         <div id="instructions">
             <p><strong>Instructions:</strong></p>
             <ul>
                 <li>Click on any thumbnail image to view it in the large display</li>
-                <li>Hover over thumbnails to see the border effect</li>
+                <li>Hover over thumbnails to see the rollover border effect</li>
                 <li>Click on the large image to open it in a new window</li>
+                <li>Use navigation links to see JavaScript link handling</li>
+                <li>Click "Load Page Content" to see page-within-page functionality</li>
                 <li>Use left/right arrow keys to navigate between images</li>
                 <li>Press Enter to open the current large image in a new window</li>
             </ul>
         </div>
+
         <footer>
             <hr>
             <p>EL Centro College WebDev - jQuery Gallery Assignment</p>
