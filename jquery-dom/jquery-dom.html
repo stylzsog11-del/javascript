@@ -167,11 +167,14 @@
             let cart = [];
             let isHighlighted = false;
             let pricesVisible = false;
+            let flowerRatings = {}; // Track ratings for each flower
 
             // Star rating functionality
             $('.star').hover(
                 function() {
                     const rating = $(this).data('rating');
+                    const flowerId = $(this).closest('figure').find('.add').attr('id');
+                    
                     $(this).parent().find('.star').each(function(index) {
                         if (index < rating) {
                             $(this).attr('src', 'staron.gif');
@@ -181,12 +184,28 @@
                     });
                 },
                 function() {
-                    $(this).parent().find('.star').attr('src', 'staroff.gif');
+                    const flowerId = $(this).closest('figure').find('.add').attr('id');
+                    const savedRating = flowerRatings[flowerId];
+                    
+                    // Restore saved rating or default to no stars
+                    $(this).parent().find('.star').each(function(index) {
+                        if (savedRating && index < savedRating) {
+                            $(this).attr('src', 'staron.gif');
+                        } else {
+                            $(this).attr('src', 'staroff.gif');
+                        }
+                    });
                 }
             );
 
             $('.star').click(function() {
                 const rating = $(this).data('rating');
+                const flowerId = $(this).closest('figure').find('.add').attr('id');
+                
+                // Save the rating for this flower
+                flowerRatings[flowerId] = rating;
+                
+                // Update the stars permanently
                 $(this).parent().find('.star').each(function(index) {
                     if (index < rating) {
                         $(this).attr('src', 'staron.gif');
@@ -195,11 +214,18 @@
                     }
                 });
                 
-                // Add a visual feedback
+                // Add a visual feedback to show rating was saved
                 $(this).parent().parent().find('figcaption').addClass('highlighted');
                 setTimeout(() => {
                     $(this).parent().parent().find('figcaption').removeClass('highlighted');
                 }, 1000);
+                
+                // Optional: Add a brief "Rating Saved!" message
+                const $feedback = $('<div style="color: green; font-size: 0.8em; text-align: center;">Rating Saved!</div>');
+                $(this).parent().parent().append($feedback);
+                setTimeout(() => {
+                    $feedback.fadeOut(300, function() { $(this).remove(); });
+                }, 1500);
             });
 
             // Add to cart functionality
