@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery Photo Gallery - Patti's Posies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="gallery.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>jQuery Photo Gallery - Chrysanthemum Collection</h1>
+        </header>
+        
+        <nav>
+            <p><a href="jquery-dom.html">jQuery DOM</a> | <a href="shopping.html">Shopping Cart</a> | <a href="https://github.com/stylzsog11-del/javascript" target="_blank">GitHub Repo</a></p>
+        </nav>
+
+        <!-- Gallery Section -->
+        <div id="gallery">
+            <h2>Mum Photo Gallery</h2>
+            <p>Click on any thumbnail image below to view it in large size. Click the large image to open it in a new window.</p>
+            
+            <!-- Large Image Display -->
+            <div id="mainImage">
+                <img id="lgPic" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23FFD700'/%3E%3Ctext x='50%25' y='40%25' font-size='32' text-anchor='middle' dy='.3em' fill='%23333'%3EYellow Pompom%3C/text%3E%3Ctext x='50%25' y='60%25' font-size='32' text-anchor='middle' dy='.3em' fill='%23333'%3EMum%3C/text%3E%3C/svg%3E" alt="Yellow Pompom Mum">
+                <p id="lgTitle">Yellow Pompom Mum</p>
+            </div>
+            
+            <!-- Thumbnail Images -->
+            <div id="thumbs">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='100%25' height='100%25' fill='%23FFD700'/%3E%3Ctext x='50%25' y='40%25' font-size='18' text-anchor='middle' dy='.3em' fill='%23333'%3EYellow%3C/text%3E%3Ctext x='50%25' y='60%25' font-size='18' text-anchor='middle' dy='.3em' fill='%23333'%3EPompom%3C/text%3E%3C/svg%3E" alt="Yellow Pompom Mum">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='100%25' height='100%25' fill='%23800080'/%3E%3Ctext x='50%25' y='40%25' font-size='18' text-anchor='middle' dy='.3em' fill='white'%3EPurple%3C/text%3E%3Ctext x='50%25' y='60%25' font-size='18' text-anchor='middle' dy='.3em' fill='white'%3ESingle%3C/text%3E%3C/svg%3E" alt="Purple Single Mum">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='100%25' height='100%25' fill='%23FFFFFF' stroke='%23ccc' stroke-width='4'/%3E%3Ctext x='50%25' y='40%25' font-size='18' text-anchor='middle' dy='.3em' fill='%23333'%3EWhite%3C/text%3E%3Ctext x='50%25' y='60%25' font-size='18' text-anchor='middle' dy='.3em' fill='%23333'%3EDouble%3C/text%3E%3C/svg%3E" alt="White Double Mum">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='100%25' height='100%25' fill='%23FFC0CB'/%3E%3Ctext x='50%25' y='40%25' font-size='18' text-anchor='middle' dy='.3em' fill='%23333'%3EPink%3C/text%3E%3Ctext x='50%25' y='60%25' font-size='18' text-anchor='middle' dy='.3em' fill='%23333'%3ESingle%3C/text%3E%3C/svg%3E" alt="Pink Single Mum">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='100%25' height='100%25' fill='%23FFA500'/%3E%3Ctext x='50%25' y='35%25' font-size='16' text-anchor='middle' dy='.3em' fill='%23333'%3ESunburst%3C/text%3E%3Ctext x='50%25' y='65%25' font-size='16' text-anchor='middle' dy='.3em' fill='%23333'%3EDaisy%3C/text%3E%3C/svg%3E" alt="Sunburst Daisy Mum">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='100%25' height='100%25' fill='%23FF00FF'/%3E%3Ctext x='50%25' y='35%25' font-size='16' text-anchor='middle' dy='.3em' fill='white'%3EMagenta%3C/text%3E%3Ctext x='50%25' y='65%25' font-size='16' text-anchor='middle' dy='.3em' fill='white'%3EDaisy%3C/text%3E%3C/svg%3E" alt="Magenta Daisy Mum">
+            </div>
+        </div>
+
+        <!-- Requirements Demonstration -->
+        <div id="requirements">
+            <h2>Assignment Requirements Demonstration</h2>
+            <ul class="requirements-list">
+                <li>
+                    <span class="requirement-title">Create rollover images</span>
+                    <div class="requirement-description">Hover over any thumbnail to see the border and shadow effects</div>
+                </li>
+                <li>
+                    <span class="requirement-title">Preload images</span>
+                    <div class="requirement-description">All images are preloaded automatically when the page loads</div>
+                </li>
+                <li>
+                    <span class="requirement-title">Create a photo gallery using jQuery</span>
+                    <div class="requirement-description">Click any thumbnail to display it as the large image</div>
+                </li>
+                <li>
+                    <span class="requirement-title">Select a link with JavaScript</span>
+                    <div class="requirement-description">Navigation links above use jQuery event handlers</div>
+                </li>
+                <li>
+                    <span class="requirement-title">Prevent a page from following a link</span>
+                    <div class="requirement-description">Large image click is intercepted to open in new window instead</div>
+                </li>
+                <li>
+                    <span class="requirement-title">Open a link in another window</span>
+                    <div class="requirement-description">Click the large image to open it in a new window</div>
+                </li>
+                <li>
+                    <span class="requirement-title">Open a page within a page</span>
+                    <div class="requirement-description">This entire gallery is a page that could be embedded within another page</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Instructions -->
+        <div id="instructions">
+            <h2>How to Use</h2>
+            <div class="instruction-grid">
+                <div class="instruction-item">
+                    <h4>Gallery Navigation</h4>
+                    <p>Click any thumbnail image to display it as the main image. The caption will update automatically.</p>
+                </div>
+                <div class="instruction-item">
+                    <h4>Hover Effects</h4>
+                    <p>Move your mouse over thumbnails to see the rollover effects with borders and shadows.</p>
+                </div>
+                <div class="instruction-item">
+                    <h4>New Window</h4>
+                    <p>Click the large image to open it in a separate window for detailed viewing.</p>
+                </div>
+                <div class="instruction-item">
+                    <h4>Keyboard Navigation</h4>
+                    <p>Use left/right arrow keys to navigate between images. Press Enter to open in new window.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <hr>
+            <p>EL Centro College Web <Del></Del></p>
+            <p><a href="https://github.com/stylzsog11-del/javascript" target="_blank">View Project on GitHub</a> | 
+               <a href="https://stylzsog11-del.github.io/javascript/jquery-gallery.html" target="_blank">Live Demo</a></p>
+        </footer>
+    </div>
+
+    <script src="gallery.js"></script>
+</body>
+</html>
