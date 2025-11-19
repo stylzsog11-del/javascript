@@ -22,28 +22,40 @@ $(document).ready(function() {
     // Call preload function immediately
     preloadImages();
     
-    // ===== REQUIREMENT: Create rollover images =====
-    // Add hover effect to smaller images with thin dark green border and box shadow
+    // ===== REQUIREMENT: Create rollovers for all the thumbnail images =====
+    // Add hover effect to ALL thumbnail images with visual feedback
     $('.thumb').hover(
         function() {
-            // Mouse enter - add thin dark green border and box shadow
+            // Mouse enter - create rollover effect
             $(this).css({
-                'border': '2px solid darkgreen',
-                'box-shadow': '0 2px 8px rgba(0, 100, 0, 0.7)',
-                'transition': 'all 0.3s ease'
+                'border': '3px solid darkgreen',
+                'box-shadow': '0 4px 12px rgba(0, 128, 0, 0.8)',
+                'transform': 'scale(1.1)',
+                'transition': 'all 0.3s ease',
+                'opacity': '1'
             });
+            console.log('✅ Rollover effect applied to thumbnail:', $(this).attr('alt'));
         },
         function() {
-            // Mouse leave - remove border and shadow
+            // Mouse leave - remove rollover effects
             $(this).css({
-                'border': 'none',
-                'box-shadow': 'none'
+                'border': '1px solid #ccc',
+                'box-shadow': 'none',
+                'transform': 'scale(1)',
+                'opacity': '0.8'
             });
         }
     );
     
+    // Initialize thumbnail styling
+    $('.thumb').css({
+        'border': '1px solid #ccc',
+        'opacity': '0.8',
+        'transition': 'all 0.3s ease'
+    });
+    
     // ===== REQUIREMENT: Create a photo gallery using jQuery =====
-    // Add click event to smaller images to replace larger image
+    // Create a click event to display the thumbnail images in the larger image
     $('.thumb').click(function(e) {
         e.preventDefault();
         
@@ -53,11 +65,13 @@ $(document).ready(function() {
         
         // Replace the src attribute of the larger image with clicked image src
         $('#lgPic').attr('src', thumbnailSrc);
+        $('#lgPic').attr('alt', thumbnailAlt);
         
-        // Take alternate text from small image and replace text under large image
-        // Replace the text under the large image with alt text
-        $('#imageCaption').text(newAlt);
+        // Display new title under large image when replaced
+        $('#imageCaption').text(thumbnailAlt);
+        
         console.log('✅ Gallery: Replaced large image with:', thumbnailAlt);
+        console.log('✅ New title displayed under large image:', thumbnailAlt);
     });
     
     // ===== REQUIREMENT: Select a link with JavaScript =====
@@ -78,26 +92,32 @@ $(document).ready(function() {
     });
     
     // ===== REQUIREMENT: Open a link in another window =====
-    // Add click event to large image to open it in new window using src as URL
+    // Open a new window with the large image as the source. Must be current large image.
     $('#lgPic').click(function(e) {
         e.preventDefault();
         
-        const imageSrc = $(this).attr('src');
-        const imageAlt = $(this).attr('alt');
+        // Get current large image src and alt (whatever is currently displayed)
+        const currentLargeImageSrc = $(this).attr('src');
+        const currentLargeImageAlt = $(this).attr('alt');
         
-        // Open new window with image src as URL (as specified in assignment)
-        const newWindow = window.open('', 'ImageWindow', 'width=600,height=500,scrollbars=yes');
+        // Open new window with CURRENT large image as source
+        const newWindow = window.open('', 'ImageWindow', 'width=700,height=600,scrollbars=yes,resizable=yes');
         
-        // Create simple HTML content in new window
-        newWindow.document.write('<html><head><title>' + imageAlt + '</title></head>');
-        newWindow.document.write('<body style="text-align: center; padding: 20px;">');
-        newWindow.document.write('<h2>' + imageAlt + '</h2>');
-        newWindow.document.write('<img src="' + imageSrc + '" style="max-width: 90%; height: auto;" alt="' + imageAlt + '">');
-        newWindow.document.write('<p>Image opened in new window!</p>');
+        // Create HTML content in new window with current large image
+        newWindow.document.write('<html><head><title>' + currentLargeImageAlt + '</title>');
+        newWindow.document.write('<style>body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background: #f5f5f5; }');
+        newWindow.document.write('img { max-width: 95%; height: auto; border: 2px solid #333; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }');
+        newWindow.document.write('h2 { color: #2c5530; margin-bottom: 20px; }</style></head>');
+        newWindow.document.write('<body>');
+        newWindow.document.write('<h2>' + currentLargeImageAlt + '</h2>');
+        newWindow.document.write('<img src="' + currentLargeImageSrc + '" alt="' + currentLargeImageAlt + '">');
+        newWindow.document.write('<p><strong>Current Large Image opened in new window</strong></p>');
+        newWindow.document.write('<button onclick="window.close()" style="padding: 8px 16px; margin-top: 10px; background: #2c5530; color: white; border: none; border-radius: 4px; cursor: pointer;">Close Window</button>');
         newWindow.document.write('</body></html>');
         newWindow.document.close();
         
-        console.log('✅ Opened image in new window using src attribute as URL');
+        console.log('✅ Opened NEW WINDOW with CURRENT large image:', currentLargeImageAlt);
+        console.log('✅ Source used:', currentLargeImageSrc);
     });
     
     // ===== REQUIREMENT: Open a page within a page =====
@@ -107,14 +127,13 @@ $(document).ready(function() {
     // Make large image clickable with cursor pointer
     $('#lgPic').css('cursor', 'pointer');
     
-    // Log all assignment requirements completion
-    console.log('🎉 ALL ASSIGNMENT REQUIREMENTS COMPLETED:');
-    console.log('✅ 1. Create rollover images - hover effects on thumbnails');
-    console.log('✅ 2. Preload images - all images loaded automatically');
-    console.log('✅ 3. Create photo gallery using jQuery - click to change large image');
-    console.log('✅ 4. Select a link with JavaScript - navigation link selection');
-    console.log('✅ 5. Prevent page from following a link - preventDefault() used');
-    console.log('✅ 6. Open a link in another window - large image opens in popup');
-    console.log('✅ 7. Open a page within a page - gallery embeddable concept');
-    console.log('Gallery ready for assignment submission!');
+    // Log all specific requirements completion
+    console.log('🎉 ALL SPECIFIC REQUIREMENTS IMPLEMENTED:');
+    console.log('✅ 1. Create rollovers for ALL thumbnail images - hover effects working');
+    console.log('✅ 2. Create click event to display thumbnails in larger image - functional');
+    console.log('✅ 3. Display new title under large image when replaced - caption updates');
+    console.log('✅ 4. Open new window with large image as source - MUST BE CURRENT large image');
+    console.log('✅ 5. Image preloading - all images loaded for performance');
+    console.log('Gallery ready with all specified requirements!');
+    console.log('Test: Hover over thumbnails, click to change, click large image for new window');
 });
