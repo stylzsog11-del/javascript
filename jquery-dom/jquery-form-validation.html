@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery Form Validation - Order Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="form-validation.css" rel="stylesheet">
+    <!-- jQuery Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>jQuery Form Validation Assignment</h1>
+            <p class="subtitle">Order Form with Complete Validation</p>
+        </header>
+        
+        <nav>
+            <p><a href="jquery-dom.html" class="internal-link">jQuery DOM</a> | 
+               <a href="jquery-gallery.html" class="internal-link">Photo Gallery</a> | 
+               <a href="shopping.html" class="internal-link">Shopping Cart</a> | 
+               <a href="https://github.com/stylzsog11-del/javascript" target="_blank" class="external-link">GitHub Repo</a></p>
+        </nav>
+
+       
+     <!-- Order Form -->
+        <form id="orderForm" method="post" action="#" novalidate>
+            <!-- Personal Information Section -->
+            <fieldset>
+                <legend>Personal Information</legend>
+                
+                <div class="form-row">
+                    <label for="username">Name:</label>
+                    <input type="text" id="username" name="username" required>
+                    <span class="error" id="usernameError"></span>
+                </div>
+                
+                <div class="form-row">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error" id="emailError"></span>
+                </div>
+                
+                <div class="form-row">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                    <span class="error" id="addressError"></span>
+                </div>
+                
+                <div class="form-row">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" required>
+                    <span class="error" id="cityError"></span>
+                </div>
+                
+                <div class="form-row">
+                    <label for="state">State:</label>
+                    <select id="state" name="state" required>
+                        <option value="">Select State</option>
+                        <option value="AL">Alabama</option>
+                        <option value="CA">California</option>
+                        <option value="FL">Florida</option>
+                        <option value="NY">New York</option>
+                        <option value="TX">Texas</option>
+                        <option value="WA">Washington</option>
+                    </select>
+                    <span class="error" id="stateError"></span>
+                </div>
+                
+                <div class="form-row">
+                    <label for="zip">Zip Code:</label>
+                    <input type="text" id="zip" name="zip" maxlength="5" required>
+                    <span class="error" id="zipError"></span>
+                </div>
+            </fieldset>
+            
+            <!-- Shipping Information Section -->
+            <fieldset>
+                <legend>Shipping Information</legend>
+                
+                <div class="form-row">
+                    <label for="copyAddress">
+                        <input type="checkbox" id="copyAddress" name="copyAddress">
+                        Copy billing address to shipping address
+                    </label>
+                </div>
+                
+                <div class="form-row">
+                    <label for="shipAddress">Shipping Address:</label>
+                    <input type="text" id="shipAddress" name="shipAddress" required>
+                    <span class="error" id="shipAddressError"></span>
+                </div>
+                
+                <div class="form-row">
+                    <label for="shipCity">Shipping City:</label>
+                    <input type="text" id="shipCity" name="shipCity" required>
+                    <span class="error" id="shipCityError"></span>
+                </div>
+                
+                <div class="form-row">
+                    <label for="shipState">Shipping State:</label>
+                    <select id="shipState" name="shipState" required>
+                        <option value="">Select State</option>
+                        <option value="AL">Alabama</option>
+                        <option value="CA">California</option>
+                        <option value="FL">Florida</option>
+                        <option value="NY">New York</option>
+                        <option value="TX">Texas</option>
+                        <option value="WA">Washington</option>
+                    </select>
+                    <span class="error" id="shipStateError"></span>
+                </div>
+                
+                <div class="form-row">
+                    <label for="shipZip">Shipping Zip Code:</label>
+                    <input type="text" id="shipZip" name="shipZip" maxlength="5" required>
+                    <span class="error" id="shipZipError"></span>
+                </div>
+            </fieldset>
+            
+            <!-- Order Items Section -->
+            <fieldset>
+                <legend>Order Items</legend>
+                
+                <table id="orderTable">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Yellow Pompom Mum</td>
+                            <td id="price1">$12.99</td>
+                            <td><input type="number" class="qty" id="qty1" name="qty1" min="0" value="0"></td>
+                            <td id="total1">$0.00</td>
+                        </tr>
+                        <tr>
+                            <td>Purple Single Mum</td>
+                            <td id="price2">$10.99</td>
+                            <td><input type="number" class="qty" id="qty2" name="qty2" min="0" value="0"></td>
+                            <td id="total2">$0.00</td>
+                        </tr>
+                        <tr>
+                            <td>White Double Mum</td>
+                            <td id="price3">$15.99</td>
+                            <td><input type="number" class="qty" id="qty3" name="qty3" min="0" value="0"></td>
+                            <td id="total3">$0.00</td>
+                        </tr>
+                        <tr>
+                            <td>Pink Single Mum</td>
+                            <td id="price4">$11.99</td>
+                            <td><input type="number" class="qty" id="qty4" name="qty4" min="0" value="0"></td>
+                            <td id="total4">$0.00</td>
+                        </tr>
+                        <tr>
+                            <td>Sunburst Daisy Mum</td>
+                            <td id="price5">$13.99</td>
+                            <td><input type="number" class="qty" id="qty5" name="qty5" min="0" value="0"></td>
+                            <td id="total5">$0.00</td>
+                        </tr>
+                        <tr>
+                            <td>Magenta Daisy Mum</td>
+                            <td id="price6">$14.99</td>
+                            <td><input type="number" class="qty" id="qty6" name="qty6" min="0" value="0"></td>
+                            <td id="total6">$0.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!-- Order Totals -->
+                <div id="orderTotals">
+                    <table class="totals-table">
+                        <tr>
+                            <td class="label">Subtotal:</td>
+                            <td id="subtotal">$0.00</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Tax:</td>
+                            <td id="tax">$0.00</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Shipping:</td>
+                            <td id="shipping">$0.00</td>
+                        </tr>
+                        <tr class="grand-total">
+                            <td class="label">Grand Total:</td>
+                            <td id="grandTotal">$0.00</td>
+                        </tr>
+                    </table>
+                </div>
+            </fieldset>
+            
+            <!-- Form Actions -->
+            <div class="form-actions">
+                <button type="submit" id="submitBtn">Place Order</button>
+                <button type="reset" id="resetBtn">Reset Form</button>
+            </div>
+        </form>
+
+     <footer>
+            <hr>
+            <p>EL Centro College WebDev</p>
+                    
+        </footer>
+    </div>
+
+    <!-- External JavaScript file -->
+    <script src="form-validation.js"></script>
+</body>
+</html>
