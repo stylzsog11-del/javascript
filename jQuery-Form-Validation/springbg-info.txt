@@ -1,0 +1,4 @@
+# Spring Background Image
+# This is a placeholder - the actual image file springbg.jpg should be saved in the same directory
+# The image shows a beautiful spring tulip garden with vibrant red, pink, purple, and white tulips
+# under lush green trees, perfect for Patti's Posies spring theme.
